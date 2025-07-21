@@ -1,0 +1,2900 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Delpha Data Quality API",
+    "description": "\n    The Delpha API provides comprehensive data quality assessment and improvement capabilities.\n    \n    This API allows you to assess and improve the quality of your data across 6 key dimensions:\n    - Accuracy: How correct and reliable your data is\n    - Completeness: How much of the required data is present\n    - Consistency: How uniform and coherent your data is\n    - Timeliness: How current and up-to-date your data is\n    - Validity: How well your data conforms to defined rules\n    - Uniqueness: How free your data is from duplicates\n    ",
+    "contact": {
+      "name": "Delpha Support",
+      "url": "https://delpha.io",
+      "email": "support.api@delpha.io"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://ao67qf61qk.execute-api.eu-west-1.amazonaws.com/prod",
+      "description": "Production API server"
+    },
+    {
+      "url": "https://ao67qf61qk.execute-api.eu-west-1.amazonaws.com/prod",
+      "description": "Development API server"
+    }
+  ],
+  "paths": {
+    "/v1/email": {
+      "post": {
+        "tags": [
+          "Email Assessment"
+        ],
+        "summary": "Submit email for assessment",
+        "description": "Submit an email address for data quality assessment. This endpoint accepts email data and returns a job ID for tracking the assessment progress.",
+        "operationId": "submitEmailAssessment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "title": "Email",
+                    "description": "The email address",
+                    "examples": [
+                      "john.doe@company.com"
+                    ]
+                  },
+                  "first_name": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "title": "First Name",
+                    "description": "First name",
+                    "examples": [
+                      "John"
+                    ]
+                  },
+                  "last_name": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "title": "Last Name",
+                    "description": "Last name",
+                    "examples": [
+                      "Doe"
+                    ]
+                  },
+                  "website": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "title": "Website",
+                    "description": "Website URL",
+                    "examples": [
+                      "https://company.com"
+                    ]
+                  }
+                },
+                "type": "object",
+                "required": [
+                  "email"
+                ],
+                "title": "EmailSubmitInput",
+                "description": "\n    Input model for email submission.\n    "
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Job submitted to assess_email_v16",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "job_id": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "title": "Job Id",
+                      "description": "The job ID. Required if status <= 300.",
+                      "examples": [
+                        "1234567890",
+                        null,
+                        null,
+                        null
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "title": "Message",
+                      "description": "The message to return",
+                      "examples": [
+                        "Job submitted to assess_email_v16",
+                        "Invalid email format or missing required fields",
+                        "Internal server error",
+                        "Service unavailable"
+                      ]
+                    },
+                    "status": {
+                      "type": "integer",
+                      "title": "Status",
+                      "description": "The status code to return",
+                      "examples": [
+                        202,
+                        400,
+                        500,
+                        502
+                      ]
+                    }
+                  },
+                  "type": "object",
+                  "required": [
+                    "message",
+                    "status"
+                  ],
+                  "title": "EmailSubmitOutput",
+                  "description": "\n    Output model for email submission.\n\n    The job_id is required only if the status code indicates success (status <= MAX_SUCCESS_STATUS_CODE).\n    "
+                },
+                "examples": {
+                  "default": {
+                    "summary": "202 response",
+                    "value": {
+                      "job_id": "1234567890",
+                      "message": "Job submitted to assess_email_v16",
+                      "status": 202
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid email format or missing required fields",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "job_id": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "title": "Job Id",
+                      "description": "The job ID. Required if status <= 300.",
+                      "examples": [
+                        "1234567890",
+                        null,
+                        null,
+                        null
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "title": "Message",
+                      "description": "The message to return",
+                      "examples": [
+                        "Job submitted to assess_email_v16",
+                        "Invalid email format or missing required fields",
+                        "Internal server error",
+                        "Service unavailable"
+                      ]
+                    },
+                    "status": {
+                      "type": "integer",
+                      "title": "Status",
+                      "description": "The status code to return",
+                      "examples": [
+                        202,
+                        400,
+                        500,
+                        502
+                      ]
+                    }
+                  },
+                  "type": "object",
+                  "required": [
+                    "message",
+                    "status"
+                  ],
+                  "title": "EmailSubmitOutput",
+                  "description": "\n    Output model for email submission.\n\n    The job_id is required only if the status code indicates success (status <= MAX_SUCCESS_STATUS_CODE).\n    "
+                },
+                "examples": {
+                  "default": {
+                    "summary": "400 response",
+                    "value": {
+                      "job_id": null,
+                      "message": "Invalid email format or missing required fields",
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "job_id": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "title": "Job Id",
+                      "description": "The job ID. Required if status <= 300.",
+                      "examples": [
+                        "1234567890",
+                        null,
+                        null,
+                        null
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "title": "Message",
+                      "description": "The message to return",
+                      "examples": [
+                        "Job submitted to assess_email_v16",
+                        "Invalid email format or missing required fields",
+                        "Internal server error",
+                        "Service unavailable"
+                      ]
+                    },
+                    "status": {
+                      "type": "integer",
+                      "title": "Status",
+                      "description": "The status code to return",
+                      "examples": [
+                        202,
+                        400,
+                        500,
+                        502
+                      ]
+                    }
+                  },
+                  "type": "object",
+                  "required": [
+                    "message",
+                    "status"
+                  ],
+                  "title": "EmailSubmitOutput",
+                  "description": "\n    Output model for email submission.\n\n    The job_id is required only if the status code indicates success (status <= MAX_SUCCESS_STATUS_CODE).\n    "
+                },
+                "examples": {
+                  "default": {
+                    "summary": "500 response",
+                    "value": {
+                      "job_id": null,
+                      "message": "Internal server error",
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Service unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "job_id": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "title": "Job Id",
+                      "description": "The job ID. Required if status <= 300.",
+                      "examples": [
+                        "1234567890",
+                        null,
+                        null,
+                        null
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "title": "Message",
+                      "description": "The message to return",
+                      "examples": [
+                        "Job submitted to assess_email_v16",
+                        "Invalid email format or missing required fields",
+                        "Internal server error",
+                        "Service unavailable"
+                      ]
+                    },
+                    "status": {
+                      "type": "integer",
+                      "title": "Status",
+                      "description": "The status code to return",
+                      "examples": [
+                        202,
+                        400,
+                        500,
+                        502
+                      ]
+                    }
+                  },
+                  "type": "object",
+                  "required": [
+                    "message",
+                    "status"
+                  ],
+                  "title": "EmailSubmitOutput",
+                  "description": "\n    Output model for email submission.\n\n    The job_id is required only if the status code indicates success (status <= MAX_SUCCESS_STATUS_CODE).\n    "
+                },
+                "examples": {
+                  "default": {
+                    "summary": "502 response",
+                    "value": {
+                      "job_id": null,
+                      "message": "Service unavailable",
+                      "status": 502
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication failed - invalid or missing OAuth 2.0 token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "examples": [
+                        {
+                          "value": "Unauthorized"
+                        }
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "examples": [
+                        {
+                          "value": "Invalid or missing authentication token"
+                        }
+                      ]
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/email/{job_id}": {
+      "get": {
+        "tags": [
+          "Email Assessment"
+        ],
+        "summary": "Get email assessment job status",
+        "description": "Retrieve the result of an email assessment job by its ID. This endpoint allows you to check the status and get the results of a previously submitted email assessment job.",
+        "operationId": "getEmailAssessmentStatus",
+        "responses": {
+          "200": {
+            "description": "Job succeeded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "title": "Message",
+                      "description": "The message to return",
+                      "examples": [
+                        "Job succeeded.",
+                        "Job is still running.",
+                        "Input validation failed.",
+                        "Failed to retrieve job.",
+                        "Job timed out."
+                      ]
+                    },
+                    "status": {
+                      "type": "integer",
+                      "title": "Status",
+                      "description": "The status code to return",
+                      "examples": [
+                        200,
+                        202,
+                        400,
+                        500,
+                        504
+                      ]
+                    },
+                    "result": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/components/schemas/EmailModel"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "description": "The result of the job",
+                      "examples": [
+                        {
+                          "data_type": "email",
+                          "email_domain": "orange.fr",
+                          "email_domain_qualification": "nominative@perso",
+                          "email_status": "Invalid",
+                          "label": "No",
+                          "normalized_value": "victorgoube@orange.fr",
+                          "provider": "Orange",
+                          "suggestions": {
+                            "score": 0.79,
+                            "value": "victor.goubet@delpha.io"
+                          },
+                          "suggestions_from_website": {
+                            "score": 0.79,
+                            "value": "victor.goubet@delpha.io"
+                          },
+                          "website_domain": "delpha.io",
+                          "website_domain_qualification": "nominative@pro"
+                        },
+                        null,
+                        null,
+                        null,
+                        null
+                      ]
+                    },
+                    "process_time": {
+                      "anyOf": [
+                        {
+                          "type": "number",
+                          "minimum": 0.0
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "title": "Process Time",
+                      "description": "The time taken to process the job in seconds",
+                      "examples": [
+                        0.123,
+                        5,
+                        10,
+                        15,
+                        200
+                      ]
+                    }
+                  },
+                  "type": "object",
+                  "required": [
+                    "message",
+                    "status"
+                  ],
+                  "title": "EmailPullOutput",
+                  "description": "\n    Output model for email pull operation.\n\n    The result is required only if the status code indicates success (status <= MAX_SUCCESS_STATUS_CODE).\n    ",
+                  "$defs": {
+                    "DataType": {
+                      "enum": [
+                        "email",
+                        "social_network",
+                        "name",
+                        "legal_id",
+                        "phone",
+                        "address",
+                        "website"
+                      ],
+                      "title": "DataType",
+                      "type": "string"
+                    },
+                    "DomainQualification": {
+                      "description": "Enum representing the possible qualifications for an email or website domain.\n\n- nominative@pro: domain is professional and returns invalid for fake emails\n- catchall@pro: domain is professional and returns valid for fake emails\n- nominative@perso: domain is personal and returns invalid for fake emails\n- catchall@perso: domain is personal and returns valid for fake emails\n- Unknown: grey listed or temporary issue with the server",
+                      "enum": [
+                        "nominative@pro",
+                        "catchall@pro",
+                        "nominative@perso",
+                        "catchall@perso",
+                        "Unknown"
+                      ],
+                      "title": "DomainQualification",
+                      "type": "string"
+                    },
+                    "EmailModel": {
+                      "description": "Model representing the details of an email field.",
+                      "properties": {
+                        "label": {
+                          "description": "Label for the email.",
+                          "enum": [
+                            "No",
+                            "OK",
+                            "OddFormat"
+                          ],
+                          "examples": [
+                            "No"
+                          ],
+                          "title": "Label",
+                          "type": "string"
+                        },
+                        "normalized_value": {
+                          "description": "Normalized email value.",
+                          "examples": [
+                            "victorgoube@orange.fr"
+                          ],
+                          "title": "Normalized Value",
+                          "type": "string"
+                        },
+                        "provider": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "description": "Provider of the email, if any.",
+                          "examples": [
+                            "Orange"
+                          ],
+                          "title": "Provider"
+                        },
+                        "email_domain": {
+                          "description": "Domain of the email.",
+                          "examples": [
+                            "orange.fr"
+                          ],
+                          "title": "Email Domain",
+                          "type": "string"
+                        },
+                        "email_domain_qualification": {
+                          "$ref": "#/components/schemas/DomainQualification",
+                          "description": "Qualification of the email domain.",
+                          "examples": [
+                            "nominative@perso"
+                          ]
+                        },
+                        "email_status": {
+                          "description": "Status of the email. Possible values: 'Invalid', 'Unknown', 'Valid'.",
+                          "enum": [
+                            "Invalid",
+                            "Unknown",
+                            "Valid"
+                          ],
+                          "examples": [
+                            "Invalid"
+                          ],
+                          "title": "Email Status",
+                          "type": "string"
+                        },
+                        "suggestions": {
+                          "description": "Suggestions for the email.",
+                          "examples": [
+                            {
+                              "score": 0.79,
+                              "value": "victor.goubet@delpha.io"
+                            }
+                          ],
+                          "items": {
+                            "$ref": "#/components/schemas/EmailSuggestion"
+                          },
+                          "title": "Suggestions",
+                          "type": "array"
+                        },
+                        "website_domain": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "description": "Website domain associated.",
+                          "examples": [
+                            "delpha.io"
+                          ],
+                          "title": "Website Domain"
+                        },
+                        "website_domain_qualification": {
+                          "anyOf": [
+                            {
+                              "$ref": "#/components/schemas/DomainQualification"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "description": "Qualification of the website domain.",
+                          "examples": [
+                            "nominative@pro"
+                          ]
+                        },
+                        "suggestions_from_website": {
+                          "description": "Suggestions from the website.",
+                          "examples": [
+                            {
+                              "score": 0.79,
+                              "value": "victor.goubet@delpha.io"
+                            }
+                          ],
+                          "items": {
+                            "$ref": "#/components/schemas/EmailSuggestion"
+                          },
+                          "title": "Suggestions From Website",
+                          "type": "array"
+                        },
+                        "data_type": {
+                          "$ref": "#/components/schemas/DataType",
+                          "description": "The type of data for this field",
+                          "examples": [
+                            "email",
+                            "social_network",
+                            "name",
+                            "legal_id",
+                            "phone",
+                            "address",
+                            "website"
+                          ]
+                        },
+                        "scores": {
+                          "$ref": "#/components/schemas/ScoresModel",
+                          "description": "Scores for the field"
+                        }
+                      },
+                      "required": [
+                        "label",
+                        "normalized_value",
+                        "email_domain",
+                        "email_domain_qualification",
+                        "email_status",
+                        "data_type",
+                        "scores"
+                      ],
+                      "title": "EmailModel",
+                      "type": "object"
+                    },
+                    "EmailSuggestion": {
+                      "description": "Model representing a suggestion for an email.",
+                      "properties": {
+                        "value": {
+                          "description": "Suggested email value.",
+                          "examples": [
+                            "victor.goubet@delpha.io"
+                          ],
+                          "title": "Value",
+                          "type": "string"
+                        },
+                        "score": {
+                          "description": "Confidence score for the suggestion.",
+                          "examples": [
+                            0.79
+                          ],
+                          "maximum": 1,
+                          "minimum": 0,
+                          "title": "Score",
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "value",
+                        "score"
+                      ],
+                      "title": "EmailSuggestion",
+                      "type": "object"
+                    },
+                    "ScoresModel": {
+                      "description": "Model representing the scores for an email field.",
+                      "properties": {
+                        "accuracy": {
+                          "description": "Accuracy score",
+                          "examples": [
+                            0.7
+                          ],
+                          "maximum": 1,
+                          "minimum": -1,
+                          "title": "Accuracy",
+                          "type": "number"
+                        },
+                        "validity": {
+                          "description": "Validity score",
+                          "examples": [
+                            0
+                          ],
+                          "maximum": 1,
+                          "minimum": -1,
+                          "title": "Validity",
+                          "type": "integer"
+                        },
+                        "completeness": {
+                          "description": "Completeness score",
+                          "examples": [
+                            1
+                          ],
+                          "maximum": 1,
+                          "minimum": 0,
+                          "title": "Completeness",
+                          "type": "number"
+                        },
+                        "consistency": {
+                          "description": "Consistency score",
+                          "examples": [
+                            0
+                          ],
+                          "maximum": 1,
+                          "minimum": 0,
+                          "title": "Consistency",
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "accuracy",
+                        "validity",
+                        "completeness",
+                        "consistency"
+                      ],
+                      "title": "ScoresModel",
+                      "type": "object"
+                    }
+                  }
+                },
+                "examples": {
+                  "default": {
+                    "summary": "200 response",
+                    "value": {
+                      "message": "Job succeeded.",
+                      "status": 200,
+                      "result": {
+                        "label": "No",
+                        "normalized_value": "victorgoube@orange.fr",
+                        "provider": "Orange",
+                        "email_domain": "orange.fr",
+                        "email_domain_qualification": "nominative@perso",
+                        "email_status": "Invalid",
+                        "suggestions": {
+                          "value": "victor.goubet@delpha.io",
+                          "score": 0.79
+                        },
+                        "website_domain": "delpha.io",
+                        "website_domain_qualification": "nominative@pro",
+                        "suggestions_from_website": {
+                          "value": "victor.goubet@delpha.io",
+                          "score": 0.79
+                        },
+                        "data_type": "email"
+                      },
+                      "process_time": 0.123
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Job is still running.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "title": "Message",
+                      "description": "The message to return",
+                      "examples": [
+                        "Job succeeded.",
+                        "Job is still running.",
+                        "Input validation failed.",
+                        "Failed to retrieve job.",
+                        "Job timed out."
+                      ]
+                    },
+                    "status": {
+                      "type": "integer",
+                      "title": "Status",
+                      "description": "The status code to return",
+                      "examples": [
+                        200,
+                        202,
+                        400,
+                        500,
+                        504
+                      ]
+                    },
+                    "result": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/components/schemas/EmailModel"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "description": "The result of the job",
+                      "examples": [
+                        {
+                          "data_type": "email",
+                          "email_domain": "orange.fr",
+                          "email_domain_qualification": "nominative@perso",
+                          "email_status": "Invalid",
+                          "label": "No",
+                          "normalized_value": "victorgoube@orange.fr",
+                          "provider": "Orange",
+                          "suggestions": {
+                            "score": 0.79,
+                            "value": "victor.goubet@delpha.io"
+                          },
+                          "suggestions_from_website": {
+                            "score": 0.79,
+                            "value": "victor.goubet@delpha.io"
+                          },
+                          "website_domain": "delpha.io",
+                          "website_domain_qualification": "nominative@pro"
+                        },
+                        null,
+                        null,
+                        null,
+                        null
+                      ]
+                    },
+                    "process_time": {
+                      "anyOf": [
+                        {
+                          "type": "number",
+                          "minimum": 0.0
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "title": "Process Time",
+                      "description": "The time taken to process the job in seconds",
+                      "examples": [
+                        0.123,
+                        5,
+                        10,
+                        15,
+                        200
+                      ]
+                    }
+                  },
+                  "type": "object",
+                  "required": [
+                    "message",
+                    "status"
+                  ],
+                  "title": "EmailPullOutput",
+                  "description": "\n    Output model for email pull operation.\n\n    The result is required only if the status code indicates success (status <= MAX_SUCCESS_STATUS_CODE).\n    ",
+                  "$defs": {
+                    "DataType": {
+                      "enum": [
+                        "email",
+                        "social_network",
+                        "name",
+                        "legal_id",
+                        "phone",
+                        "address",
+                        "website"
+                      ],
+                      "title": "DataType",
+                      "type": "string"
+                    },
+                    "DomainQualification": {
+                      "description": "Enum representing the possible qualifications for an email or website domain.\n\n- nominative@pro: domain is professional and returns invalid for fake emails\n- catchall@pro: domain is professional and returns valid for fake emails\n- nominative@perso: domain is personal and returns invalid for fake emails\n- catchall@perso: domain is personal and returns valid for fake emails\n- Unknown: grey listed or temporary issue with the server",
+                      "enum": [
+                        "nominative@pro",
+                        "catchall@pro",
+                        "nominative@perso",
+                        "catchall@perso",
+                        "Unknown"
+                      ],
+                      "title": "DomainQualification",
+                      "type": "string"
+                    },
+                    "EmailModel": {
+                      "description": "Model representing the details of an email field.",
+                      "properties": {
+                        "label": {
+                          "description": "Label for the email.",
+                          "enum": [
+                            "No",
+                            "OK",
+                            "OddFormat"
+                          ],
+                          "examples": [
+                            "No"
+                          ],
+                          "title": "Label",
+                          "type": "string"
+                        },
+                        "normalized_value": {
+                          "description": "Normalized email value.",
+                          "examples": [
+                            "victorgoube@orange.fr"
+                          ],
+                          "title": "Normalized Value",
+                          "type": "string"
+                        },
+                        "provider": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "description": "Provider of the email, if any.",
+                          "examples": [
+                            "Orange"
+                          ],
+                          "title": "Provider"
+                        },
+                        "email_domain": {
+                          "description": "Domain of the email.",
+                          "examples": [
+                            "orange.fr"
+                          ],
+                          "title": "Email Domain",
+                          "type": "string"
+                        },
+                        "email_domain_qualification": {
+                          "$ref": "#/components/schemas/DomainQualification",
+                          "description": "Qualification of the email domain.",
+                          "examples": [
+                            "nominative@perso"
+                          ]
+                        },
+                        "email_status": {
+                          "description": "Status of the email. Possible values: 'Invalid', 'Unknown', 'Valid'.",
+                          "enum": [
+                            "Invalid",
+                            "Unknown",
+                            "Valid"
+                          ],
+                          "examples": [
+                            "Invalid"
+                          ],
+                          "title": "Email Status",
+                          "type": "string"
+                        },
+                        "suggestions": {
+                          "description": "Suggestions for the email.",
+                          "examples": [
+                            {
+                              "score": 0.79,
+                              "value": "victor.goubet@delpha.io"
+                            }
+                          ],
+                          "items": {
+                            "$ref": "#/components/schemas/EmailSuggestion"
+                          },
+                          "title": "Suggestions",
+                          "type": "array"
+                        },
+                        "website_domain": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "description": "Website domain associated.",
+                          "examples": [
+                            "delpha.io"
+                          ],
+                          "title": "Website Domain"
+                        },
+                        "website_domain_qualification": {
+                          "anyOf": [
+                            {
+                              "$ref": "#/components/schemas/DomainQualification"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "description": "Qualification of the website domain.",
+                          "examples": [
+                            "nominative@pro"
+                          ]
+                        },
+                        "suggestions_from_website": {
+                          "description": "Suggestions from the website.",
+                          "examples": [
+                            {
+                              "score": 0.79,
+                              "value": "victor.goubet@delpha.io"
+                            }
+                          ],
+                          "items": {
+                            "$ref": "#/components/schemas/EmailSuggestion"
+                          },
+                          "title": "Suggestions From Website",
+                          "type": "array"
+                        },
+                        "data_type": {
+                          "$ref": "#/components/schemas/DataType",
+                          "description": "The type of data for this field",
+                          "examples": [
+                            "email",
+                            "social_network",
+                            "name",
+                            "legal_id",
+                            "phone",
+                            "address",
+                            "website"
+                          ]
+                        },
+                        "scores": {
+                          "$ref": "#/components/schemas/ScoresModel",
+                          "description": "Scores for the field"
+                        }
+                      },
+                      "required": [
+                        "label",
+                        "normalized_value",
+                        "email_domain",
+                        "email_domain_qualification",
+                        "email_status",
+                        "data_type",
+                        "scores"
+                      ],
+                      "title": "EmailModel",
+                      "type": "object"
+                    },
+                    "EmailSuggestion": {
+                      "description": "Model representing a suggestion for an email.",
+                      "properties": {
+                        "value": {
+                          "description": "Suggested email value.",
+                          "examples": [
+                            "victor.goubet@delpha.io"
+                          ],
+                          "title": "Value",
+                          "type": "string"
+                        },
+                        "score": {
+                          "description": "Confidence score for the suggestion.",
+                          "examples": [
+                            0.79
+                          ],
+                          "maximum": 1,
+                          "minimum": 0,
+                          "title": "Score",
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "value",
+                        "score"
+                      ],
+                      "title": "EmailSuggestion",
+                      "type": "object"
+                    },
+                    "ScoresModel": {
+                      "description": "Model representing the scores for an email field.",
+                      "properties": {
+                        "accuracy": {
+                          "description": "Accuracy score",
+                          "examples": [
+                            0.7
+                          ],
+                          "maximum": 1,
+                          "minimum": -1,
+                          "title": "Accuracy",
+                          "type": "number"
+                        },
+                        "validity": {
+                          "description": "Validity score",
+                          "examples": [
+                            0
+                          ],
+                          "maximum": 1,
+                          "minimum": -1,
+                          "title": "Validity",
+                          "type": "integer"
+                        },
+                        "completeness": {
+                          "description": "Completeness score",
+                          "examples": [
+                            1
+                          ],
+                          "maximum": 1,
+                          "minimum": 0,
+                          "title": "Completeness",
+                          "type": "number"
+                        },
+                        "consistency": {
+                          "description": "Consistency score",
+                          "examples": [
+                            0
+                          ],
+                          "maximum": 1,
+                          "minimum": 0,
+                          "title": "Consistency",
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "accuracy",
+                        "validity",
+                        "completeness",
+                        "consistency"
+                      ],
+                      "title": "ScoresModel",
+                      "type": "object"
+                    }
+                  }
+                },
+                "examples": {
+                  "default": {
+                    "summary": "202 response",
+                    "value": {
+                      "message": "Job is still running.",
+                      "status": 202,
+                      "result": null,
+                      "process_time": 5
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Input validation failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "title": "Message",
+                      "description": "The message to return",
+                      "examples": [
+                        "Job succeeded.",
+                        "Job is still running.",
+                        "Input validation failed.",
+                        "Failed to retrieve job.",
+                        "Job timed out."
+                      ]
+                    },
+                    "status": {
+                      "type": "integer",
+                      "title": "Status",
+                      "description": "The status code to return",
+                      "examples": [
+                        200,
+                        202,
+                        400,
+                        500,
+                        504
+                      ]
+                    },
+                    "result": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/components/schemas/EmailModel"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "description": "The result of the job",
+                      "examples": [
+                        {
+                          "data_type": "email",
+                          "email_domain": "orange.fr",
+                          "email_domain_qualification": "nominative@perso",
+                          "email_status": "Invalid",
+                          "label": "No",
+                          "normalized_value": "victorgoube@orange.fr",
+                          "provider": "Orange",
+                          "suggestions": {
+                            "score": 0.79,
+                            "value": "victor.goubet@delpha.io"
+                          },
+                          "suggestions_from_website": {
+                            "score": 0.79,
+                            "value": "victor.goubet@delpha.io"
+                          },
+                          "website_domain": "delpha.io",
+                          "website_domain_qualification": "nominative@pro"
+                        },
+                        null,
+                        null,
+                        null,
+                        null
+                      ]
+                    },
+                    "process_time": {
+                      "anyOf": [
+                        {
+                          "type": "number",
+                          "minimum": 0.0
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "title": "Process Time",
+                      "description": "The time taken to process the job in seconds",
+                      "examples": [
+                        0.123,
+                        5,
+                        10,
+                        15,
+                        200
+                      ]
+                    }
+                  },
+                  "type": "object",
+                  "required": [
+                    "message",
+                    "status"
+                  ],
+                  "title": "EmailPullOutput",
+                  "description": "\n    Output model for email pull operation.\n\n    The result is required only if the status code indicates success (status <= MAX_SUCCESS_STATUS_CODE).\n    ",
+                  "$defs": {
+                    "DataType": {
+                      "enum": [
+                        "email",
+                        "social_network",
+                        "name",
+                        "legal_id",
+                        "phone",
+                        "address",
+                        "website"
+                      ],
+                      "title": "DataType",
+                      "type": "string"
+                    },
+                    "DomainQualification": {
+                      "description": "Enum representing the possible qualifications for an email or website domain.\n\n- nominative@pro: domain is professional and returns invalid for fake emails\n- catchall@pro: domain is professional and returns valid for fake emails\n- nominative@perso: domain is personal and returns invalid for fake emails\n- catchall@perso: domain is personal and returns valid for fake emails\n- Unknown: grey listed or temporary issue with the server",
+                      "enum": [
+                        "nominative@pro",
+                        "catchall@pro",
+                        "nominative@perso",
+                        "catchall@perso",
+                        "Unknown"
+                      ],
+                      "title": "DomainQualification",
+                      "type": "string"
+                    },
+                    "EmailModel": {
+                      "description": "Model representing the details of an email field.",
+                      "properties": {
+                        "label": {
+                          "description": "Label for the email.",
+                          "enum": [
+                            "No",
+                            "OK",
+                            "OddFormat"
+                          ],
+                          "examples": [
+                            "No"
+                          ],
+                          "title": "Label",
+                          "type": "string"
+                        },
+                        "normalized_value": {
+                          "description": "Normalized email value.",
+                          "examples": [
+                            "victorgoube@orange.fr"
+                          ],
+                          "title": "Normalized Value",
+                          "type": "string"
+                        },
+                        "provider": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "description": "Provider of the email, if any.",
+                          "examples": [
+                            "Orange"
+                          ],
+                          "title": "Provider"
+                        },
+                        "email_domain": {
+                          "description": "Domain of the email.",
+                          "examples": [
+                            "orange.fr"
+                          ],
+                          "title": "Email Domain",
+                          "type": "string"
+                        },
+                        "email_domain_qualification": {
+                          "$ref": "#/components/schemas/DomainQualification",
+                          "description": "Qualification of the email domain.",
+                          "examples": [
+                            "nominative@perso"
+                          ]
+                        },
+                        "email_status": {
+                          "description": "Status of the email. Possible values: 'Invalid', 'Unknown', 'Valid'.",
+                          "enum": [
+                            "Invalid",
+                            "Unknown",
+                            "Valid"
+                          ],
+                          "examples": [
+                            "Invalid"
+                          ],
+                          "title": "Email Status",
+                          "type": "string"
+                        },
+                        "suggestions": {
+                          "description": "Suggestions for the email.",
+                          "examples": [
+                            {
+                              "score": 0.79,
+                              "value": "victor.goubet@delpha.io"
+                            }
+                          ],
+                          "items": {
+                            "$ref": "#/components/schemas/EmailSuggestion"
+                          },
+                          "title": "Suggestions",
+                          "type": "array"
+                        },
+                        "website_domain": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "description": "Website domain associated.",
+                          "examples": [
+                            "delpha.io"
+                          ],
+                          "title": "Website Domain"
+                        },
+                        "website_domain_qualification": {
+                          "anyOf": [
+                            {
+                              "$ref": "#/components/schemas/DomainQualification"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "description": "Qualification of the website domain.",
+                          "examples": [
+                            "nominative@pro"
+                          ]
+                        },
+                        "suggestions_from_website": {
+                          "description": "Suggestions from the website.",
+                          "examples": [
+                            {
+                              "score": 0.79,
+                              "value": "victor.goubet@delpha.io"
+                            }
+                          ],
+                          "items": {
+                            "$ref": "#/components/schemas/EmailSuggestion"
+                          },
+                          "title": "Suggestions From Website",
+                          "type": "array"
+                        },
+                        "data_type": {
+                          "$ref": "#/components/schemas/DataType",
+                          "description": "The type of data for this field",
+                          "examples": [
+                            "email",
+                            "social_network",
+                            "name",
+                            "legal_id",
+                            "phone",
+                            "address",
+                            "website"
+                          ]
+                        },
+                        "scores": {
+                          "$ref": "#/components/schemas/ScoresModel",
+                          "description": "Scores for the field"
+                        }
+                      },
+                      "required": [
+                        "label",
+                        "normalized_value",
+                        "email_domain",
+                        "email_domain_qualification",
+                        "email_status",
+                        "data_type",
+                        "scores"
+                      ],
+                      "title": "EmailModel",
+                      "type": "object"
+                    },
+                    "EmailSuggestion": {
+                      "description": "Model representing a suggestion for an email.",
+                      "properties": {
+                        "value": {
+                          "description": "Suggested email value.",
+                          "examples": [
+                            "victor.goubet@delpha.io"
+                          ],
+                          "title": "Value",
+                          "type": "string"
+                        },
+                        "score": {
+                          "description": "Confidence score for the suggestion.",
+                          "examples": [
+                            0.79
+                          ],
+                          "maximum": 1,
+                          "minimum": 0,
+                          "title": "Score",
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "value",
+                        "score"
+                      ],
+                      "title": "EmailSuggestion",
+                      "type": "object"
+                    },
+                    "ScoresModel": {
+                      "description": "Model representing the scores for an email field.",
+                      "properties": {
+                        "accuracy": {
+                          "description": "Accuracy score",
+                          "examples": [
+                            0.7
+                          ],
+                          "maximum": 1,
+                          "minimum": -1,
+                          "title": "Accuracy",
+                          "type": "number"
+                        },
+                        "validity": {
+                          "description": "Validity score",
+                          "examples": [
+                            0
+                          ],
+                          "maximum": 1,
+                          "minimum": -1,
+                          "title": "Validity",
+                          "type": "integer"
+                        },
+                        "completeness": {
+                          "description": "Completeness score",
+                          "examples": [
+                            1
+                          ],
+                          "maximum": 1,
+                          "minimum": 0,
+                          "title": "Completeness",
+                          "type": "number"
+                        },
+                        "consistency": {
+                          "description": "Consistency score",
+                          "examples": [
+                            0
+                          ],
+                          "maximum": 1,
+                          "minimum": 0,
+                          "title": "Consistency",
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "accuracy",
+                        "validity",
+                        "completeness",
+                        "consistency"
+                      ],
+                      "title": "ScoresModel",
+                      "type": "object"
+                    }
+                  }
+                },
+                "examples": {
+                  "default": {
+                    "summary": "400 response",
+                    "value": {
+                      "message": "Input validation failed.",
+                      "status": 400,
+                      "result": null,
+                      "process_time": 10
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Failed to retrieve job.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "title": "Message",
+                      "description": "The message to return",
+                      "examples": [
+                        "Job succeeded.",
+                        "Job is still running.",
+                        "Input validation failed.",
+                        "Failed to retrieve job.",
+                        "Job timed out."
+                      ]
+                    },
+                    "status": {
+                      "type": "integer",
+                      "title": "Status",
+                      "description": "The status code to return",
+                      "examples": [
+                        200,
+                        202,
+                        400,
+                        500,
+                        504
+                      ]
+                    },
+                    "result": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/components/schemas/EmailModel"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "description": "The result of the job",
+                      "examples": [
+                        {
+                          "data_type": "email",
+                          "email_domain": "orange.fr",
+                          "email_domain_qualification": "nominative@perso",
+                          "email_status": "Invalid",
+                          "label": "No",
+                          "normalized_value": "victorgoube@orange.fr",
+                          "provider": "Orange",
+                          "suggestions": {
+                            "score": 0.79,
+                            "value": "victor.goubet@delpha.io"
+                          },
+                          "suggestions_from_website": {
+                            "score": 0.79,
+                            "value": "victor.goubet@delpha.io"
+                          },
+                          "website_domain": "delpha.io",
+                          "website_domain_qualification": "nominative@pro"
+                        },
+                        null,
+                        null,
+                        null,
+                        null
+                      ]
+                    },
+                    "process_time": {
+                      "anyOf": [
+                        {
+                          "type": "number",
+                          "minimum": 0.0
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "title": "Process Time",
+                      "description": "The time taken to process the job in seconds",
+                      "examples": [
+                        0.123,
+                        5,
+                        10,
+                        15,
+                        200
+                      ]
+                    }
+                  },
+                  "type": "object",
+                  "required": [
+                    "message",
+                    "status"
+                  ],
+                  "title": "EmailPullOutput",
+                  "description": "\n    Output model for email pull operation.\n\n    The result is required only if the status code indicates success (status <= MAX_SUCCESS_STATUS_CODE).\n    ",
+                  "$defs": {
+                    "DataType": {
+                      "enum": [
+                        "email",
+                        "social_network",
+                        "name",
+                        "legal_id",
+                        "phone",
+                        "address",
+                        "website"
+                      ],
+                      "title": "DataType",
+                      "type": "string"
+                    },
+                    "DomainQualification": {
+                      "description": "Enum representing the possible qualifications for an email or website domain.\n\n- nominative@pro: domain is professional and returns invalid for fake emails\n- catchall@pro: domain is professional and returns valid for fake emails\n- nominative@perso: domain is personal and returns invalid for fake emails\n- catchall@perso: domain is personal and returns valid for fake emails\n- Unknown: grey listed or temporary issue with the server",
+                      "enum": [
+                        "nominative@pro",
+                        "catchall@pro",
+                        "nominative@perso",
+                        "catchall@perso",
+                        "Unknown"
+                      ],
+                      "title": "DomainQualification",
+                      "type": "string"
+                    },
+                    "EmailModel": {
+                      "description": "Model representing the details of an email field.",
+                      "properties": {
+                        "label": {
+                          "description": "Label for the email.",
+                          "enum": [
+                            "No",
+                            "OK",
+                            "OddFormat"
+                          ],
+                          "examples": [
+                            "No"
+                          ],
+                          "title": "Label",
+                          "type": "string"
+                        },
+                        "normalized_value": {
+                          "description": "Normalized email value.",
+                          "examples": [
+                            "victorgoube@orange.fr"
+                          ],
+                          "title": "Normalized Value",
+                          "type": "string"
+                        },
+                        "provider": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "description": "Provider of the email, if any.",
+                          "examples": [
+                            "Orange"
+                          ],
+                          "title": "Provider"
+                        },
+                        "email_domain": {
+                          "description": "Domain of the email.",
+                          "examples": [
+                            "orange.fr"
+                          ],
+                          "title": "Email Domain",
+                          "type": "string"
+                        },
+                        "email_domain_qualification": {
+                          "$ref": "#/components/schemas/DomainQualification",
+                          "description": "Qualification of the email domain.",
+                          "examples": [
+                            "nominative@perso"
+                          ]
+                        },
+                        "email_status": {
+                          "description": "Status of the email. Possible values: 'Invalid', 'Unknown', 'Valid'.",
+                          "enum": [
+                            "Invalid",
+                            "Unknown",
+                            "Valid"
+                          ],
+                          "examples": [
+                            "Invalid"
+                          ],
+                          "title": "Email Status",
+                          "type": "string"
+                        },
+                        "suggestions": {
+                          "description": "Suggestions for the email.",
+                          "examples": [
+                            {
+                              "score": 0.79,
+                              "value": "victor.goubet@delpha.io"
+                            }
+                          ],
+                          "items": {
+                            "$ref": "#/components/schemas/EmailSuggestion"
+                          },
+                          "title": "Suggestions",
+                          "type": "array"
+                        },
+                        "website_domain": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "description": "Website domain associated.",
+                          "examples": [
+                            "delpha.io"
+                          ],
+                          "title": "Website Domain"
+                        },
+                        "website_domain_qualification": {
+                          "anyOf": [
+                            {
+                              "$ref": "#/components/schemas/DomainQualification"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "description": "Qualification of the website domain.",
+                          "examples": [
+                            "nominative@pro"
+                          ]
+                        },
+                        "suggestions_from_website": {
+                          "description": "Suggestions from the website.",
+                          "examples": [
+                            {
+                              "score": 0.79,
+                              "value": "victor.goubet@delpha.io"
+                            }
+                          ],
+                          "items": {
+                            "$ref": "#/components/schemas/EmailSuggestion"
+                          },
+                          "title": "Suggestions From Website",
+                          "type": "array"
+                        },
+                        "data_type": {
+                          "$ref": "#/components/schemas/DataType",
+                          "description": "The type of data for this field",
+                          "examples": [
+                            "email",
+                            "social_network",
+                            "name",
+                            "legal_id",
+                            "phone",
+                            "address",
+                            "website"
+                          ]
+                        },
+                        "scores": {
+                          "$ref": "#/components/schemas/ScoresModel",
+                          "description": "Scores for the field"
+                        }
+                      },
+                      "required": [
+                        "label",
+                        "normalized_value",
+                        "email_domain",
+                        "email_domain_qualification",
+                        "email_status",
+                        "data_type",
+                        "scores"
+                      ],
+                      "title": "EmailModel",
+                      "type": "object"
+                    },
+                    "EmailSuggestion": {
+                      "description": "Model representing a suggestion for an email.",
+                      "properties": {
+                        "value": {
+                          "description": "Suggested email value.",
+                          "examples": [
+                            "victor.goubet@delpha.io"
+                          ],
+                          "title": "Value",
+                          "type": "string"
+                        },
+                        "score": {
+                          "description": "Confidence score for the suggestion.",
+                          "examples": [
+                            0.79
+                          ],
+                          "maximum": 1,
+                          "minimum": 0,
+                          "title": "Score",
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "value",
+                        "score"
+                      ],
+                      "title": "EmailSuggestion",
+                      "type": "object"
+                    },
+                    "ScoresModel": {
+                      "description": "Model representing the scores for an email field.",
+                      "properties": {
+                        "accuracy": {
+                          "description": "Accuracy score",
+                          "examples": [
+                            0.7
+                          ],
+                          "maximum": 1,
+                          "minimum": -1,
+                          "title": "Accuracy",
+                          "type": "number"
+                        },
+                        "validity": {
+                          "description": "Validity score",
+                          "examples": [
+                            0
+                          ],
+                          "maximum": 1,
+                          "minimum": -1,
+                          "title": "Validity",
+                          "type": "integer"
+                        },
+                        "completeness": {
+                          "description": "Completeness score",
+                          "examples": [
+                            1
+                          ],
+                          "maximum": 1,
+                          "minimum": 0,
+                          "title": "Completeness",
+                          "type": "number"
+                        },
+                        "consistency": {
+                          "description": "Consistency score",
+                          "examples": [
+                            0
+                          ],
+                          "maximum": 1,
+                          "minimum": 0,
+                          "title": "Consistency",
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "accuracy",
+                        "validity",
+                        "completeness",
+                        "consistency"
+                      ],
+                      "title": "ScoresModel",
+                      "type": "object"
+                    }
+                  }
+                },
+                "examples": {
+                  "default": {
+                    "summary": "500 response",
+                    "value": {
+                      "message": "Failed to retrieve job.",
+                      "status": 500,
+                      "result": null,
+                      "process_time": 15
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Job timed out.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "title": "Message",
+                      "description": "The message to return",
+                      "examples": [
+                        "Job succeeded.",
+                        "Job is still running.",
+                        "Input validation failed.",
+                        "Failed to retrieve job.",
+                        "Job timed out."
+                      ]
+                    },
+                    "status": {
+                      "type": "integer",
+                      "title": "Status",
+                      "description": "The status code to return",
+                      "examples": [
+                        200,
+                        202,
+                        400,
+                        500,
+                        504
+                      ]
+                    },
+                    "result": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/components/schemas/EmailModel"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "description": "The result of the job",
+                      "examples": [
+                        {
+                          "data_type": "email",
+                          "email_domain": "orange.fr",
+                          "email_domain_qualification": "nominative@perso",
+                          "email_status": "Invalid",
+                          "label": "No",
+                          "normalized_value": "victorgoube@orange.fr",
+                          "provider": "Orange",
+                          "suggestions": {
+                            "score": 0.79,
+                            "value": "victor.goubet@delpha.io"
+                          },
+                          "suggestions_from_website": {
+                            "score": 0.79,
+                            "value": "victor.goubet@delpha.io"
+                          },
+                          "website_domain": "delpha.io",
+                          "website_domain_qualification": "nominative@pro"
+                        },
+                        null,
+                        null,
+                        null,
+                        null
+                      ]
+                    },
+                    "process_time": {
+                      "anyOf": [
+                        {
+                          "type": "number",
+                          "minimum": 0.0
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "title": "Process Time",
+                      "description": "The time taken to process the job in seconds",
+                      "examples": [
+                        0.123,
+                        5,
+                        10,
+                        15,
+                        200
+                      ]
+                    }
+                  },
+                  "type": "object",
+                  "required": [
+                    "message",
+                    "status"
+                  ],
+                  "title": "EmailPullOutput",
+                  "description": "\n    Output model for email pull operation.\n\n    The result is required only if the status code indicates success (status <= MAX_SUCCESS_STATUS_CODE).\n    ",
+                  "$defs": {
+                    "DataType": {
+                      "enum": [
+                        "email",
+                        "social_network",
+                        "name",
+                        "legal_id",
+                        "phone",
+                        "address",
+                        "website"
+                      ],
+                      "title": "DataType",
+                      "type": "string"
+                    },
+                    "DomainQualification": {
+                      "description": "Enum representing the possible qualifications for an email or website domain.\n\n- nominative@pro: domain is professional and returns invalid for fake emails\n- catchall@pro: domain is professional and returns valid for fake emails\n- nominative@perso: domain is personal and returns invalid for fake emails\n- catchall@perso: domain is personal and returns valid for fake emails\n- Unknown: grey listed or temporary issue with the server",
+                      "enum": [
+                        "nominative@pro",
+                        "catchall@pro",
+                        "nominative@perso",
+                        "catchall@perso",
+                        "Unknown"
+                      ],
+                      "title": "DomainQualification",
+                      "type": "string"
+                    },
+                    "EmailModel": {
+                      "description": "Model representing the details of an email field.",
+                      "properties": {
+                        "label": {
+                          "description": "Label for the email.",
+                          "enum": [
+                            "No",
+                            "OK",
+                            "OddFormat"
+                          ],
+                          "examples": [
+                            "No"
+                          ],
+                          "title": "Label",
+                          "type": "string"
+                        },
+                        "normalized_value": {
+                          "description": "Normalized email value.",
+                          "examples": [
+                            "victorgoube@orange.fr"
+                          ],
+                          "title": "Normalized Value",
+                          "type": "string"
+                        },
+                        "provider": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "description": "Provider of the email, if any.",
+                          "examples": [
+                            "Orange"
+                          ],
+                          "title": "Provider"
+                        },
+                        "email_domain": {
+                          "description": "Domain of the email.",
+                          "examples": [
+                            "orange.fr"
+                          ],
+                          "title": "Email Domain",
+                          "type": "string"
+                        },
+                        "email_domain_qualification": {
+                          "$ref": "#/components/schemas/DomainQualification",
+                          "description": "Qualification of the email domain.",
+                          "examples": [
+                            "nominative@perso"
+                          ]
+                        },
+                        "email_status": {
+                          "description": "Status of the email. Possible values: 'Invalid', 'Unknown', 'Valid'.",
+                          "enum": [
+                            "Invalid",
+                            "Unknown",
+                            "Valid"
+                          ],
+                          "examples": [
+                            "Invalid"
+                          ],
+                          "title": "Email Status",
+                          "type": "string"
+                        },
+                        "suggestions": {
+                          "description": "Suggestions for the email.",
+                          "examples": [
+                            {
+                              "score": 0.79,
+                              "value": "victor.goubet@delpha.io"
+                            }
+                          ],
+                          "items": {
+                            "$ref": "#/components/schemas/EmailSuggestion"
+                          },
+                          "title": "Suggestions",
+                          "type": "array"
+                        },
+                        "website_domain": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "description": "Website domain associated.",
+                          "examples": [
+                            "delpha.io"
+                          ],
+                          "title": "Website Domain"
+                        },
+                        "website_domain_qualification": {
+                          "anyOf": [
+                            {
+                              "$ref": "#/components/schemas/DomainQualification"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "description": "Qualification of the website domain.",
+                          "examples": [
+                            "nominative@pro"
+                          ]
+                        },
+                        "suggestions_from_website": {
+                          "description": "Suggestions from the website.",
+                          "examples": [
+                            {
+                              "score": 0.79,
+                              "value": "victor.goubet@delpha.io"
+                            }
+                          ],
+                          "items": {
+                            "$ref": "#/components/schemas/EmailSuggestion"
+                          },
+                          "title": "Suggestions From Website",
+                          "type": "array"
+                        },
+                        "data_type": {
+                          "$ref": "#/components/schemas/DataType",
+                          "description": "The type of data for this field",
+                          "examples": [
+                            "email",
+                            "social_network",
+                            "name",
+                            "legal_id",
+                            "phone",
+                            "address",
+                            "website"
+                          ]
+                        },
+                        "scores": {
+                          "$ref": "#/components/schemas/ScoresModel",
+                          "description": "Scores for the field"
+                        }
+                      },
+                      "required": [
+                        "label",
+                        "normalized_value",
+                        "email_domain",
+                        "email_domain_qualification",
+                        "email_status",
+                        "data_type",
+                        "scores"
+                      ],
+                      "title": "EmailModel",
+                      "type": "object"
+                    },
+                    "EmailSuggestion": {
+                      "description": "Model representing a suggestion for an email.",
+                      "properties": {
+                        "value": {
+                          "description": "Suggested email value.",
+                          "examples": [
+                            "victor.goubet@delpha.io"
+                          ],
+                          "title": "Value",
+                          "type": "string"
+                        },
+                        "score": {
+                          "description": "Confidence score for the suggestion.",
+                          "examples": [
+                            0.79
+                          ],
+                          "maximum": 1,
+                          "minimum": 0,
+                          "title": "Score",
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "value",
+                        "score"
+                      ],
+                      "title": "EmailSuggestion",
+                      "type": "object"
+                    },
+                    "ScoresModel": {
+                      "description": "Model representing the scores for an email field.",
+                      "properties": {
+                        "accuracy": {
+                          "description": "Accuracy score",
+                          "examples": [
+                            0.7
+                          ],
+                          "maximum": 1,
+                          "minimum": -1,
+                          "title": "Accuracy",
+                          "type": "number"
+                        },
+                        "validity": {
+                          "description": "Validity score",
+                          "examples": [
+                            0
+                          ],
+                          "maximum": 1,
+                          "minimum": -1,
+                          "title": "Validity",
+                          "type": "integer"
+                        },
+                        "completeness": {
+                          "description": "Completeness score",
+                          "examples": [
+                            1
+                          ],
+                          "maximum": 1,
+                          "minimum": 0,
+                          "title": "Completeness",
+                          "type": "number"
+                        },
+                        "consistency": {
+                          "description": "Consistency score",
+                          "examples": [
+                            0
+                          ],
+                          "maximum": 1,
+                          "minimum": 0,
+                          "title": "Consistency",
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "accuracy",
+                        "validity",
+                        "completeness",
+                        "consistency"
+                      ],
+                      "title": "ScoresModel",
+                      "type": "object"
+                    }
+                  }
+                },
+                "examples": {
+                  "default": {
+                    "summary": "504 response",
+                    "value": {
+                      "message": "Job timed out.",
+                      "status": 504,
+                      "result": null,
+                      "process_time": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication failed - invalid or missing OAuth 2.0 token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "examples": [
+                        {
+                          "value": "Unauthorized"
+                        }
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "examples": [
+                        {
+                          "value": "Invalid or missing authentication token"
+                        }
+                      ]
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "description": "The unique identifier of the email assessment job",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "examples": {
+            "sample": {
+              "summary": "Sample job ID",
+              "value": "1234567890"
+            }
+          },
+          "name": "job_id",
+          "in": "path"
+        }
+      ]
+    }
+  },
+  "components": {
+    "schemas": {
+      "EmailSubmitInput": {
+        "properties": {
+          "email": {
+            "type": "string",
+            "title": "Email",
+            "description": "The email address",
+            "examples": [
+              "john.doe@company.com"
+            ]
+          },
+          "first_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "First Name",
+            "description": "First name",
+            "examples": [
+              "John"
+            ]
+          },
+          "last_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Name",
+            "description": "Last name",
+            "examples": [
+              "Doe"
+            ]
+          },
+          "website": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Website",
+            "description": "Website URL",
+            "examples": [
+              "https://company.com"
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "email"
+        ],
+        "title": "EmailSubmitInput",
+        "description": "Input model for email submission."
+      },
+      "EmailSubmitOutput": {
+        "properties": {
+          "job_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Job Id",
+            "description": "The job ID. Required if status <= 300.",
+            "examples": [
+              "1234567890",
+              null,
+              null,
+              null
+            ]
+          },
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "description": "The message to return",
+            "examples": [
+              "Job submitted to assess_email_v16",
+              "Invalid email format or missing required fields",
+              "Internal server error",
+              "Service unavailable"
+            ]
+          },
+          "status": {
+            "type": "integer",
+            "title": "Status",
+            "description": "The status code to return",
+            "examples": [
+              202,
+              400,
+              500,
+              502
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "message",
+          "status"
+        ],
+        "title": "EmailSubmitOutput",
+        "description": "Output model for email submission.\n\nThe job_id is required only if the status code indicates success (status <= MAX_SUCCESS_STATUS_CODE)."
+      },
+      "DataType": {
+        "type": "string",
+        "enum": [
+          "email",
+          "social_network",
+          "name",
+          "legal_id",
+          "phone",
+          "address",
+          "website"
+        ],
+        "title": "DataType"
+      },
+      "DomainQualification": {
+        "type": "string",
+        "enum": [
+          "nominative@pro",
+          "catchall@pro",
+          "nominative@perso",
+          "catchall@perso",
+          "Unknown"
+        ],
+        "title": "DomainQualification",
+        "description": "Enum representing the possible qualifications for an email or website domain.\n\n- nominative@pro: domain is professional and returns invalid for fake emails\n- catchall@pro: domain is professional and returns valid for fake emails\n- nominative@perso: domain is personal and returns invalid for fake emails\n- catchall@perso: domain is personal and returns valid for fake emails\n- Unknown: grey listed or temporary issue with the server"
+      },
+      "EmailModel": {
+        "properties": {
+          "label": {
+            "type": "string",
+            "enum": [
+              "No",
+              "OK",
+              "OddFormat"
+            ],
+            "title": "Label",
+            "description": "Label for the email.",
+            "examples": [
+              "No"
+            ]
+          },
+          "normalized_value": {
+            "type": "string",
+            "title": "Normalized Value",
+            "description": "Normalized email value.",
+            "examples": [
+              "victorgoube@orange.fr"
+            ]
+          },
+          "provider": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Provider",
+            "description": "Provider of the email, if any.",
+            "examples": [
+              "Orange"
+            ]
+          },
+          "email_domain": {
+            "type": "string",
+            "title": "Email Domain",
+            "description": "Domain of the email.",
+            "examples": [
+              "orange.fr"
+            ]
+          },
+          "email_domain_qualification": {
+            "$ref": "#/components/schemas/DomainQualification",
+            "description": "Qualification of the email domain.",
+            "examples": [
+              "nominative@perso"
+            ]
+          },
+          "email_status": {
+            "type": "string",
+            "enum": [
+              "Invalid",
+              "Unknown",
+              "Valid"
+            ],
+            "title": "Email Status",
+            "description": "Status of the email. Possible values: 'Invalid', 'Unknown', 'Valid'.",
+            "examples": [
+              "Invalid"
+            ]
+          },
+          "suggestions": {
+            "items": {
+              "$ref": "#/components/schemas/EmailSuggestion"
+            },
+            "type": "array",
+            "title": "Suggestions",
+            "description": "Suggestions for the email.",
+            "examples": [
+              {
+                "score": 0.79,
+                "value": "victor.goubet@delpha.io"
+              }
+            ]
+          },
+          "website_domain": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Website Domain",
+            "description": "Website domain associated.",
+            "examples": [
+              "delpha.io"
+            ]
+          },
+          "website_domain_qualification": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DomainQualification"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Qualification of the website domain.",
+            "examples": [
+              "nominative@pro"
+            ]
+          },
+          "suggestions_from_website": {
+            "items": {
+              "$ref": "#/components/schemas/EmailSuggestion"
+            },
+            "type": "array",
+            "title": "Suggestions From Website",
+            "description": "Suggestions from the website.",
+            "examples": [
+              {
+                "score": 0.79,
+                "value": "victor.goubet@delpha.io"
+              }
+            ]
+          },
+          "data_type": {
+            "$ref": "#/components/schemas/DataType",
+            "description": "The type of data for this field",
+            "examples": [
+              "email",
+              "social_network",
+              "name",
+              "legal_id",
+              "phone",
+              "address",
+              "website"
+            ]
+          },
+          "scores": {
+            "$ref": "#/components/schemas/ScoresModel",
+            "description": "Scores for the field"
+          }
+        },
+        "type": "object",
+        "required": [
+          "label",
+          "normalized_value",
+          "email_domain",
+          "email_domain_qualification",
+          "email_status",
+          "data_type",
+          "scores"
+        ],
+        "title": "EmailModel",
+        "description": "Model representing the details of an email field."
+      },
+      "EmailSuggestion": {
+        "properties": {
+          "value": {
+            "type": "string",
+            "title": "Value",
+            "description": "Suggested email value.",
+            "examples": [
+              "victor.goubet@delpha.io"
+            ]
+          },
+          "score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Score",
+            "description": "Confidence score for the suggestion.",
+            "examples": [
+              0.79
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "value",
+          "score"
+        ],
+        "title": "EmailSuggestion",
+        "description": "Model representing a suggestion for an email."
+      },
+      "ScoresModel": {
+        "properties": {
+          "accuracy": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": -1.0,
+            "title": "Accuracy",
+            "description": "Accuracy score",
+            "examples": [
+              0.7
+            ]
+          },
+          "validity": {
+            "type": "integer",
+            "maximum": 1.0,
+            "minimum": -1.0,
+            "title": "Validity",
+            "description": "Validity score",
+            "examples": [
+              0
+            ]
+          },
+          "completeness": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Completeness",
+            "description": "Completeness score",
+            "examples": [
+              1
+            ]
+          },
+          "consistency": {
+            "type": "integer",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Consistency",
+            "description": "Consistency score",
+            "examples": [
+              0
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "accuracy",
+          "validity",
+          "completeness",
+          "consistency"
+        ],
+        "title": "ScoresModel",
+        "description": "Model representing the scores for an email field."
+      },
+      "EmailPullOutput": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "description": "The message to return",
+            "examples": [
+              "Job succeeded.",
+              "Job is still running.",
+              "Input validation failed.",
+              "Failed to retrieve job.",
+              "Job timed out."
+            ]
+          },
+          "status": {
+            "type": "integer",
+            "title": "Status",
+            "description": "The status code to return",
+            "examples": [
+              200,
+              202,
+              400,
+              500,
+              504
+            ]
+          },
+          "result": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/EmailModel"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The result of the job",
+            "examples": [
+              {
+                "data_type": "email",
+                "email_domain": "orange.fr",
+                "email_domain_qualification": "nominative@perso",
+                "email_status": "Invalid",
+                "label": "No",
+                "normalized_value": "victorgoube@orange.fr",
+                "provider": "Orange",
+                "suggestions": {
+                  "score": 0.79,
+                  "value": "victor.goubet@delpha.io"
+                },
+                "suggestions_from_website": {
+                  "score": 0.79,
+                  "value": "victor.goubet@delpha.io"
+                },
+                "website_domain": "delpha.io",
+                "website_domain_qualification": "nominative@pro"
+              },
+              null,
+              null,
+              null,
+              null
+            ]
+          },
+          "process_time": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Process Time",
+            "description": "The time taken to process the job in seconds",
+            "examples": [
+              0.123,
+              5,
+              10,
+              15,
+              200
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "message",
+          "status"
+        ],
+        "title": "EmailPullOutput",
+        "description": "Output model for email pull operation.\n\nThe result is required only if the status code indicates success (status <= MAX_SUCCESS_STATUS_CODE)."
+      }
+    },
+    "headers": {
+      "Access-Control-Allow-Origin": {
+        "description": "CORS header: specifies which origins are allowed to access the resource",
+        "schema": {
+          "type": "string"
+        },
+        "examples": {
+          "default": {
+            "value": "*"
+          }
+        }
+      },
+      "Access-Control-Allow-Methods": {
+        "description": "CORS header: specifies which HTTP methods are allowed",
+        "schema": {
+          "type": "string"
+        },
+        "examples": {
+          "default": {
+            "value": "GET, POST, OPTIONS"
+          }
+        }
+      },
+      "Access-Control-Allow-Headers": {
+        "description": "CORS header: specifies which headers are allowed in the request",
+        "schema": {
+          "type": "string"
+        },
+        "examples": {
+          "default": {
+            "value": "Content-Type, Authorization"
+          }
+        }
+      },
+      "Access-Control-Max-Age": {
+        "description": "CORS header: specifies how long the browser should cache the preflight response",
+        "schema": {
+          "type": "string"
+        },
+        "examples": {
+          "default": {
+            "value": "86400"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "description": "OAuth2 client credentials flow for API access",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://secure-dev.delpha.io/oauth2/token",
+            "scopes": {
+              "api/access": "Access to the public API"
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "oauth2": [
+        "api/access"
+      ]
+    }
+  ],
+  "tags": [
+    {
+      "name": "Email Assessment",
+      "description": "Operations for email data quality assessment"
+    }
+  ]
+}
