@@ -1,0 +1,38 @@
+[project]
+name = "delpha-mcp"
+version = "0.1.0"
+description = "Delpha Data Quality MCP Server: Data quality assessment for MCP-compatible tools."
+authors = [
+  { name = "Victor Goubet", email = "support.api@delpha.io" }
+]
+maintainers = [
+  { name = "Delpha", email = "support.api@delpha.io" }
+]
+readme = "README.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
+dependencies = [
+  "fastmcp>=0.1.0",
+  "httpx>=0.25.0",
+  "pydantic>=2.0.0",
+  "pydantic-settings>=2.0.0",
+  "python-dotenv>=1.0.0",
+  "authlib>=1.2.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/Delpha-Assistant/DelphaMCP"
+
+[project.scripts]
+delpha-mcp = "delpha_mcp.__main__:main"
+
+[project.optional-dependencies]
+dev = [
+  "ruff>=0.4.0",
+  "pytest>=7.0.0",
+  "build"
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta" 
