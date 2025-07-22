@@ -8,9 +8,22 @@ authors = [
 maintainers = [
   { name = "Delpha", email = "support.api@delpha.io" }
 ]
-readme = "README.md"
+readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.8"
-license = { file = "LICENSE" }
+license = "MIT"
+keywords = ["data quality", "validation", "MCP", "AI", "delpha", "email", "address", "social", "website"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Intended Audience :: Developers",
+  "Development Status :: 4 - Beta",
+  "Topic :: Software Development :: Libraries :: Application Frameworks"
+]
 dependencies = [
   "fastmcp>=0.1.0",
   "httpx>=0.25.0",
@@ -22,6 +35,8 @@ dependencies = [
 
 [project.urls]
 Homepage = "https://github.com/Delpha-Assistant/DelphaMCP"
+Documentation = "https://github.com/Delpha-Assistant/DelphaMCP#readme"
+Issues = "https://github.com/Delpha-Assistant/DelphaMCP/issues"
 
 [project.scripts]
 delpha-mcp = "delpha_mcp.__main__:main"
