@@ -35,15 +35,20 @@ Delpha is an AI-driven data quality solution that uses intelligent AI Agents to 
    - Go to `Settings → MCP` and add:
      ```json
      {
-       "Delpha": {
-         "command": "python3",
-         "args": ["-m", "delpha_mcp"],
-         "env": {
-           "DELPHA_CLIENT_ID": "your_client_id_here",
-           "DELPHA_CLIENT_SECRET": "your_client_secret_here"
-         }
-       }
-     }
+      "mcpServers": {
+        "Delpha": {
+          "command": "python3", // python on windows
+          "args": [
+            "-m",
+            "delpha_mcp"
+          ],
+          "env": {
+            "DELPHA_CLIENT_ID": "your_client_id_here",
+            "DELPHA_CLIENT_SECRET": "your_client_secret_here"
+          }
+        }
+      }
+    }
      ```
    - Replace with your Delpha credentials.
 3. **Restart Cursor** — Delpha tools are now available!
