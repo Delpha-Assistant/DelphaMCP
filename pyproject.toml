@@ -1,6 +1,6 @@
 [project]
 name = "delpha-mcp"
-version = "0.1.3"
+version = "0.1.4"
 description = "Delpha Data Quality MCP Server: Data quality assessment for MCP-compatible tools."
 authors = [
   { name = "Victor Goubet", email = "support.api@delpha.io" }
