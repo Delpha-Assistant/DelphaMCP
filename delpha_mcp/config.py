@@ -11,12 +11,12 @@ class MCPConfig(BaseSettings):
     """Configuration for Delpha MCP client and server."""
 
     delpha_base_url: str = Field(
-        "https://ao67qf61qk.execute-api.eu-west-1.amazonaws.com/prod",
+        "https://api.delpha.io",
         validation_alias="DELPHA_BASE_URL",
         description="Base URL of the Delpha API",
     )
     delpha_token_url: str = Field(
-        "https://secure-dev.delpha.io/oauth2/token",
+        "https://secure.delpha.io/oauth2/token",
         validation_alias="DELPHA_TOKEN_URL",
         description="URL of the Delpha OAuth2 token endpoint",
     )
