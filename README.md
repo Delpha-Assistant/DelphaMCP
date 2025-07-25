@@ -5,7 +5,7 @@
 </p>
 
 <h1 align="center">Delpha Data Quality MCP</h1>
-<h3 align="center">Data Quality Assessment for AI Agents & Apps</h3>
+<h3 align="center"><a href="https://delpha.io" style="color: inherit; text-decoration: none;">Intelligent AI Agents to ensure accurate, unique, and reliable customer data</a></h3>
 
 <div align="center">
 
