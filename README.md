@@ -60,28 +60,31 @@ To use Delpha MCP, you need OAuth2 client credentials. Please contact the Delpha
 
 Delpha MCP exposes a set of intelligent tools to assess and improve the quality of your data. Each tool is designed to address specific data quality challenges, providing actionable insights and suggestions for improvement.
 
-### Email Quality
+### Email Validator and Email Finder
 
 **Available MCP Tool Names:**
-- `submitEmailQuality`: Submit an email address for quality evaluation and receive a job ID for tracking progress.
-- `getEmailQualityStatus`: Retrieve the result and status of a previously submitted email quality job.
+- `submitEmailQuality`: Submit an email address for validation and enrichment, and receive a job ID for tracking progress.
+- `getEmailQualityStatus`: Retrieve the result and status of a previously submitted email validation/enrichment job.
 
 **Goal:**
-Evaluate and enhance the quality of email addresses in your database, ensuring your contact information is accurate, complete, and actionable.
 
-**Capabilities:**
-- Analyzes email addresses across four key data quality dimensions:
-  - **Completeness:** Verifies that the email field is populated.
-  - **Validity:** Checks if the email follows standard format rules.
-  - **Accuracy:** Assesses whether the email accurately matches the intended contact.
-  - **Consistency:** Ensures the email is aligned with other data points (e.g., domain, website, etc.).
-- Classifies each email as personal or professional—supporting GDPR compliance and improving deliverability.
-- Suggests corrected emails when issues are found, complete with a confidence score to guide decision-making.
-- Provides a comprehensive health check of your email data—delivering actionable insights to boost communication success, compliance, and data integrity.
+In today’s data-driven landscape, having accurate and complete email data directly impacts your organization’s efficiency, deliverability, and outreach success. Delpha’s Email Finder and Email Validator solutions ensure your email database remains robust, accurate, and up-to-date by systematically discovering missing emails and verifying email addresses.
+
+Delpha evaluates email data across four critical dimensions:
+- **Completeness:** Uses advanced Email Finder technology to locate and populate missing email addresses.
+- **Validity:** Employs a powerful Email Validator to confirm emails adhere to standard formatting rules and are deliverable.
+- **Accuracy:** Ensures that discovered emails match the intended individuals correctly.
+- **Consistency:** Verifies alignment between emails and related data points such as domains, company websites, etc.
+
+Additionally, Delpha:
+- Classifies emails as personal or professional, supporting GDPR compliance and improving deliverability.
+- Offers AI-generated recommendations for correcting or completing emails, accompanied by confidence scores to guide effective decision-making.
+
+Delpha’s integrated Email Finder and Email Validator provide a comprehensive health check and intelligent enrichment, delivering actionable insights that enhance communication success, regulatory compliance, and overall data integrity.
 
 **How it works:**
-- Submit an email address (optionally with first name, last name, and website) for quality evaluation using the `submitEmailQuality` tool.
-- Track the job and retrieve a detailed quality report, including scores for accuracy, completeness, consistency, and validity, as well as actionable suggestions for improvement, using the `getEmailQualityStatus` tool.
+- Submit an email address (optionally with first name, last name, and website) for validation and enrichment using the `submitEmailQuality` tool.
+- Track the job and retrieve a detailed report, including scores for accuracy, completeness, consistency, and validity, as well as actionable suggestions for improvement, using the `getEmailQualityStatus` tool.
 
 > More tools (address, social, website, deduplication, etc.) will be added soon as Delpha expands its data quality platform.
 
