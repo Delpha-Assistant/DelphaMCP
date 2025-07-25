@@ -63,8 +63,8 @@ Delpha MCP exposes a set of intelligent tools to assess and improve the quality 
 ### Email
 
 **Available MCP Tool Names:**
-- `submitEmailQuality`: Submit an email address for validation and enrichment, and receive a job ID for tracking progress.
-- `getEmailQualityStatus`: Retrieve the result and status of a previously submitted email validation/enrichment job.
+- `findAndValidateEmail`: Submit an email address for validation and enrichment, and receive a job ID for tracking progress.
+- `getEmailResult`: Retrieve the result and status of a previously submitted email validation/enrichment job.
 
 **Goal:**
 
@@ -84,9 +84,6 @@ Additionally:
 
 Delpha’s integrated **Email Finder** and **Email Validator** provide a comprehensive health check and intelligent enrichment, delivering actionable insights that enhance communication success, regulatory compliance, and overall data integrity.
 
-**How it works:**
-- Submit an email address (optionally with first name, last name, and website) for validation and enrichment using the `submitEmailQuality` tool.
-- Track the job and retrieve a detailed report, including scores for accuracy, completeness, consistency, and validity, as well as actionable suggestions for improvement, using the `getEmailQualityStatus` tool.
 
 > More tools (address, social, website, deduplication, etc.) will be added soon as Delpha expands its data quality platform.
 
