@@ -1,7 +1,7 @@
 [project]
 name = "delpha-mcp"
-version = "0.1.4"
-description = "Delpha Data Quality MCP Server: Data quality assessment for MCP-compatible tools."
+version = "0.1.5"
+description = "Intelligent AI Agents to ensure accurate, unique, and reliable customer data"
 authors = [
   { name = "Victor Goubet", email = "support.api@delpha.io" }
 ]
@@ -11,7 +11,7 @@ maintainers = [
 readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.8"
 license = "MIT"
-keywords = ["data quality", "validation", "MCP", "AI", "delpha", "email", "address", "social", "website"]
+keywords = ["data quality", "validation", "MCP", "AI", "delpha", "email", "email finder", "email validator", "address", "name", "social", "phone", "website", "legal id"]
 classifiers = [
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.8",
