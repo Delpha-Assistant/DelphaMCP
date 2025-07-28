@@ -14,6 +14,17 @@
 
 ---
 
+## 📋 Table of Contents
+
+- [🌟 Overview](#-overview)
+- [🎬 Demo](#-demo)
+- [🚀 Quickstart](#-quickstart)
+- [🗝️ Getting Client Credentials](#️-getting-client-credentials)
+- [🛠️ Tools](#️-tools)
+- [📞 Support](#-support)
+
+---
+
 ## 🌟 Overview
 
 Delpha is an AI-driven data quality solution that uses intelligent AI Agents to ensure accurate, unique, and reliable customer data. Delpha's specialized AI Agents automate data cleansing and enrichment, helping businesses enhance operational efficiency and drive stronger revenue performance.
@@ -21,37 +32,53 @@ Delpha is an AI-driven data quality solution that uses intelligent AI Agents to 
 - **Reduce Data Maintenance Costs:** Delpha minimizes the need for manual data cleanup, reducing labor costs and overhead associated with constant data maintenance.
 - **Improve Sales Productivity:** By automating data quality tasks, Delpha frees up significant portions of sales teams' schedules, allowing them to focus on selling rather than data entry and correction.
 - **Shorten Data Migration:** Delpha accelerates the process of unifying CRM datasets, enabling sales reps to confidently approach newly acquired customers and drive incremental revenue sooner.
-- **Deduplication with AI:** Delpha’s advanced AI accurately scores potential duplicates by analyzing multiple fields and detecting subtle variations, offering both automatic and manual merging options.
+- **Deduplication with AI:** Delpha's advanced AI accurately scores potential duplicates by analyzing multiple fields and detecting subtle variations, offering both automatic and manual merging options.
+
+<p align="center">
+  <img src="assets/MCP.png" width="600" alt="Delpha MCP Integration">
+</p>
 
 ---
 
-## 🚀 Quickstart (with Cursor)
+## 🎬 Demo
+
+See Delpha MCP in action! Watch how easy it is to validate and enrich email data directly from your AI assistant.
+
+<p align="center">
+  <img src="assets/demo.gif" width="800" alt="Delpha MCP Demo">
+</p>
+
+---
+
+## 🚀 Quickstart
 
 1. **Install the package:**
    ```bash
    pip install delpha-mcp
    ```
-2. **Configure Cursor:**
+
+2. **Configure:**
    - Go to `Settings → MCP` and add:
-     ```json
-     {
-      "mcpServers": {
-        "Delpha": {
-          "command": "python3", // python on windows
-          "args": [
-            "-m",
-            "delpha_mcp"
-          ],
-          "env": {
-            "DELPHA_CLIENT_ID": "your_client_id_here",
-            "DELPHA_CLIENT_SECRET": "your_client_secret_here"
-          }
-        }
-      }
-    }
-     ```
+   ```json
+   {
+     "mcpServers": {
+       "Delpha": {
+         "command": "python",
+         "args": [
+           "-m",
+           "delpha_mcp"
+         ],
+         "env": {
+           "DELPHA_CLIENT_ID": "your_client_id_here",
+           "DELPHA_CLIENT_SECRET": "your_client_secret_here"
+         }
+       }
+     }
+   }
+   ```
    - Replace with your Delpha credentials.
-3. **Restart Cursor** — Delpha tools are now available!
+
+3. **Restart your app** — Delpha tools are now available!
 
 ---
 

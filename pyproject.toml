@@ -1,6 +1,6 @@
 [project]
 name = "delpha-mcp"
-version = "0.1.9"
+version = "0.1.10"
 description = "Intelligent AI Agents to ensure accurate, unique, and reliable customer data"
 authors = [
   { name = "Victor Goubet", email = "support.api@delpha.io" }
