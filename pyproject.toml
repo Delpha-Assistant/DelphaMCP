@@ -1,6 +1,6 @@
 [project]
 name = "delpha-mcp"
-version = "0.1.11"
+version = "0.1.12"
 description = "Intelligent AI Agents to ensure accurate, unique, and reliable customer data"
 authors = [
   { name = "Victor Goubet", email = "support.api@delpha.io" }
@@ -52,8 +52,4 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["delpha_mcp"]
-include-package-data = true
-
-[tool.setuptools.package-data]
-"*" = ["assets/*"] 
+packages = ["delpha_mcp"] 

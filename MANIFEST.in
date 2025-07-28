@@ -1,4 +1,0 @@
-include assets/*
-include assets/MCP.png
-include assets/demo.gif
-recursive-include assets * 
