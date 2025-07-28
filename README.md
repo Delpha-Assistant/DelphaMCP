@@ -35,7 +35,7 @@ Delpha is an AI-driven data quality solution that uses intelligent AI Agents to 
 - **Deduplication with AI:** Delpha's advanced AI accurately scores potential duplicates by analyzing multiple fields and detecting subtle variations, offering both automatic and manual merging options.
 
 <p align="center">
-  <img src="assets/MCP.png" width="600" alt="Delpha MCP Integration">
+  <img src="https://github.com/Delpha-Assistant/DelphaMCP/blob/release/v0.1.12/assets/MCP.png?raw=true" width="600" alt="Delpha MCP Integration">
 </p>
 
 ---
@@ -45,7 +45,7 @@ Delpha is an AI-driven data quality solution that uses intelligent AI Agents to 
 See Delpha MCP in action! Watch how easy it is to validate and enrich email data directly from your AI assistant.
 
 <p align="center">
-  <img src="assets/demo.gif" width="800" alt="Delpha MCP Demo">
+  <img src="https://github.com/Delpha-Assistant/DelphaMCP/blob/release/v0.1.12/assets/demo.gif?raw=true" width="800" alt="Delpha MCP Demo">
 </p>
 
 ---
