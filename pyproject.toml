@@ -53,4 +53,7 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 packages = ["delpha_mcp"]
-exclude-package-data = {"*" = ["assets/*"]} 
+include-package-data = true
+
+[tool.setuptools.package-data]
+"*" = ["assets/*"] 
