@@ -49,4 +49,8 @@ dev = [
 
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta" 
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["delpha_mcp"]
+exclude-package-data = {"*" = ["assets/*"]} 
