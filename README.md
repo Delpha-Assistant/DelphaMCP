@@ -116,6 +116,24 @@ Additionally:
 
 Delpha’s integrated **Email Finder** and **Email Validator** provide a comprehensive health check and intelligent enrichment, delivering actionable insights that enhance communication success, regulatory compliance, and overall data integrity.
 
+### Email Insights
+
+**Available MCP Tool Name:**
+- `getEmailInsights`: Extract key insights from email content including name, phone number, title, company, and out-of-office status.
+
+**Goal:**
+
+Email communications contain a wealth of valuable information beyond just the email address itself. Delpha's Email Insight solution systematically analyzes email bodies to identify and extract critical contact information, professional details, and contextual insights that can transform how you understand and interact with your contacts.
+
+Delpha's Email Insight solution extracts and enriches information such as:
+
+- **Name**: Automatically identifies and extracts the sender's name from email communications.
+- **Phone Number**: Detects and normalizes phone numbers to facilitate direct contact.
+- **Title**: Extracts the sender's professional title, providing context for better engagement.
+- **Company**: Identifies the sender's organization to enhance CRM accuracy and business insights.
+- **Out-of-Office Status**: Determines if the sender is currently out of office, enabling timely and informed responses.
+
+Delpha's Email Insight delivers precise, structured insights, enhancing data quality, enabling smarter interactions, and driving informed business decisions.
 
 > More tools (address, social, website, deduplication, etc.) will be added soon as Delpha expands its data quality platform.
 
