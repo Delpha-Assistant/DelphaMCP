@@ -21,7 +21,7 @@ def run_server() -> None:
     try:
         # Load the OpenAPI specification from a URL
         logger.info(f"💡 Fetching OpenAPI spec from {config.openapi_url}")
-        response = httpx.get(config.openapi_url)
+        response = httpx.get(config.openapi_url, headers={"Cache-Control": "no-cache"})
         response.raise_for_status()
         openapi_spec = response.json()
 

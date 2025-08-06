@@ -1,6 +1,19 @@
 # Makefile for Delpha MCP Python Package
 
-.PHONY: install run publish clean format lint test venv build
+.PHONY: help install run publish clean format lint test venv build
+
+help:
+	@echo "Available commands:"
+	@echo "  help     - Show this help message."
+	@echo "  venv     - Create a virtual environment if it doesn't exist."
+	@echo "  install  - Install dependencies using uv (ensures venv exists)."
+	@echo "  run      - Run the server using the Python from .venv if available."
+	@echo "  publish  - Publish to PyPI using uv."
+	@echo "  clean    - Remove build artifacts."
+	@echo "  format   - Format code with ruff (prefer venv)."
+	@echo "  lint     - Lint code with ruff (prefer venv)."
+	@echo "  test     - Run tests using pytest from the venv if available."
+	@echo "  build    - Build the package using the Python from .venv if available."
 
 VENV_PYTHON := $(shell [ -x .venv/bin/python ] && echo .venv/bin/python || echo python)
 RUFF := $(shell [ -x .venv/bin/ruff ] && echo .venv/bin/ruff || echo ruff)
