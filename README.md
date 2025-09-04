@@ -135,6 +135,38 @@ Delpha's Email Insight solution extracts and enriches information such as:
 
 Delpha's Email Insight delivers precise, structured insights, enhancing data quality, enabling smarter interactions, and driving informed business decisions.
 
+### LinkedIn Import
+
+**Available MCP Tool Names:**
+- `submitLinkedinImport`: Submit a LinkedIn import job for profiles or companies; returns a job ID to track progress.
+- `getLinkedinImportResult`: Retrieve the status and final result of a previously submitted LinkedIn import job.
+
+**Goal:**
+Accelerate prospecting and research with a high-throughput importer for LinkedIn and Sales Navigator. Submit a search or list source and fetch normalized profile or company data at scale.
+
+**Supported sources:**
+- LinkedIn search URLs (People/Companies)
+- Sales Navigator search URLs
+- Sales Navigator list URLs
+
+**Inputs:**
+- **url**: LinkedIn or Sales Navigator search/list URL
+- **cookie**: The LinkedIn session cookie to fetch data on the user’s behalf
+- **user_agent** (optional): Custom User-Agent string (defaults to a modern desktop browser)
+- **lang** (optional): Language string like `v=2&lang=en-us`
+- **object_type**: `profile` | `company`
+
+**Flow:**
+- Start a job with `submitLinkedinImport`.
+- We handle throttling and retries automatically.
+- Poll with `getLinkedinImportResult` until complete.
+- Receive a `result_url` pointing to the final JSON dataset.
+
+**Use cases:**
+- Lead sourcing and pipeline generation
+- Account and company research
+- CRM enrichment and analytics
+
 > More tools (address, social, website, deduplication, etc.) will be added soon as Delpha expands its data quality platform.
 
 ---
