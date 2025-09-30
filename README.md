@@ -116,6 +116,49 @@ Additionally:
 
 Delpha’s integrated **Email Finder** and **Email Validator** provide a comprehensive health check and intelligent enrichment, delivering actionable insights that enhance communication success, regulatory compliance, and overall data integrity.
 
+
+### Address Validator and Address Finder
+
+**Available MCP Tool Names:**
+- `findAndValidateAddress`: Submit a postal address for validation and enrichment; returns a job ID to track progress.
+- `getAddressResult`: Retrieve the status and final result of a previously submitted address job.
+
+**Goal:**
+Ensure your address data is complete, valid, accurate, and consistent to improve delivery success, territory planning, analytics, and compliance.
+
+Delpha evaluates address data across four critical dimensions:
+- **Completeness**: Identifies and fills missing components (street number, street, city, postal code, country).
+- **Validity**: Ensures addresses conform to country-specific postal rules and canonical formats.
+- **Accuracy**: Normalizes inputs to a standardized structure and resolves ambiguous or conflicting parts.
+- **Consistency**: Verifies coherence across related fields (postal code vs city/country) and other data points.
+
+Additionally:
+- **Address Validator** standardizes and normalizes addresses to postal conventions and returns well-structured components.
+- **Address Finder** offers AI-generated recommendations with confidence scores to correct or complete addresses.
+
+Delpha’s integrated **Address Finder** and **Address Validator** deliver actionable, high-quality address data that improves operations, analytics, and downstream processes.
+
+### Website Validator and Website Finder
+
+**Available MCP Tool Names:**
+- `findAndValidateWebsite`: Submit a website for validation and enrichment; returns a job ID to track progress.
+- `getWebsiteResult`: Retrieve the status and final result of a previously submitted website job.
+
+**Goal:**
+Maintain accurate, canonical website data (root domains, normalization, qualification) for reliable enrichment, routing, and engagement.
+
+Delpha evaluates website data across four critical dimensions:
+- **Completeness**: Finds and populates missing company websites and root domains.
+- **Validity**: Confirms proper URL formatting, reachability, and safe normalization (scheme, redirects, HTTPS preference).
+- **Accuracy**: Ensures the discovered URL matches the intended entity and canonical domain.
+- **Consistency**: Verifies alignment between website domains and related data points such as company name and email domains.
+
+Additionally:
+- **Website Validator** normalizes URLs (scheme, subdomain, trailing slash) and qualifies domains when relevant.
+- **Website Finder** offers AI-generated website recommendations with confidence scores to correct or complete entries.
+
+Delpha’s integrated **Website Finder** and **Website Validator** provide a comprehensive health check and intelligent enrichment that drive higher data integrity and better customer experiences.
+
 ### Email Insights
 
 **Available MCP Tool Name:**
