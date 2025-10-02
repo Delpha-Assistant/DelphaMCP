@@ -159,6 +159,48 @@ Additionally:
 
 Delpha’s integrated **Website Finder** and **Website Validator** provide a comprehensive health check and intelligent enrichment that drive higher data integrity and better customer experiences.
 
+### LinkedIn Validator and LinkedIn Finder
+
+**Available MCP Tool Names:**
+- `findAndValidateLinkedin`: Submit a LinkedIn profile/company URL or context for validation and enrichment; returns a job ID to track progress.
+- `getLinkedinResult`: Retrieve the status and final result of a previously submitted LinkedIn job.
+
+**Goal:**
+Ensure accurate and complete LinkedIn profile and company data to improve prospecting, segmentation, and enrichment workflows.
+
+Delpha evaluates LinkedIn data across four critical dimensions:
+- **Completeness**: Finds and populates missing LinkedIn profiles and company pages.
+- **Validity**: Confirms proper URL formatting, reachability, and safe normalization (scheme, redirects, HTTPS preference).
+- **Accuracy**: Ensures the discovered URL matches the intended entity and canonical LinkedIn page.
+- **Consistency**: Verifies alignment between LinkedIn URLs and related data points such as company name and email domains.
+
+Additionally:
+- **LinkedIn Validator** normalizes URLs (scheme, subdomain, trailing slash) and qualifies page types when relevant.
+- **LinkedIn Finder** offers AI-generated LinkedIn recommendations with confidence scores to correct or complete entries.
+
+Delpha’s integrated **LinkedIn Finder** and **LinkedIn Validator** provide a comprehensive health check and intelligent enrichment that improve data integrity and prospecting outcomes.
+
+### Legal ID Validator and Legal ID Finder
+
+**Available MCP Tool Names:**
+- `findAndValidateLegalID`: Submit a legal identifier with optional context for validation and enrichment; returns a job ID to track progress.
+- `getLegalIDResult`: Retrieve the status and final result of a previously submitted legal ID job.
+
+**Goal:**
+Maintain accurate and compliant company legal identification (e.g., SIRET/SIREN, VAT), improving regulatory reporting, billing accuracy, and entity resolution.
+
+Delpha evaluates legal ID data across four critical dimensions:
+- **Completeness**: Finds and populates missing legal identifiers given company context.
+- **Validity**: Verifies format and country-specific rules for the legal ID type.
+- **Accuracy**: Confirms the ID corresponds to the intended entity; normalizes to canonical representation.
+- **Consistency**: Checks coherence across related fields (name, address, website, country) and other data points.
+
+Additionally:
+- **Legal ID Validator** standardizes IDs and returns structured metadata and qualifiers when available.
+- **Legal ID Finder** provides AI-generated recommendations with confidence scores to correct or complete missing IDs.
+
+Delpha’s integrated **Legal ID Finder** and **Legal ID Validator** deliver trustworthy, compliant identifiers that strengthen downstream processes and governance.
+
 ### Email Insights
 
 **Available MCP Tool Name:**
