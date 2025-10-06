@@ -281,7 +281,7 @@ Extract structured signals from email bodies to update/contact records faster.
 
 ---
 
-### LinkedIn Import (People & Companies)
+### LinkedIn Import
 
 **MCP Tool Names**
 
