@@ -10,18 +10,19 @@
 <div align="center">
 
 [![PyPI version](https://img.shields.io/pypi/v/delpha-mcp?label=PyPI)](https://pypi.org/project/delpha-mcp/)
+
 </div>
 
 ---
 
 ## 📋 Table of Contents
 
-- [🌟 Overview](#-overview)
-- [🎬 Demo](#-demo)
-- [🚀 Quickstart](#-quickstart)
-- [🗝️ Getting Client Credentials](#️-getting-client-credentials)
-- [🛠️ Tools](#️-tools)
-- [📞 Support](#-support)
+* [🌟 Overview](#-overview)
+* [🎬 Demo](#-demo)
+* [🚀 Quickstart](#-quickstart)
+* [🗝️ Getting Client Credentials](#️-getting-client-credentials)
+* [🛠️ Tools](#️-tools)
+* [📞 Support](#-support)
 
 ---
 
@@ -42,7 +43,7 @@ Delpha is an AI-driven data quality solution that uses intelligent AI Agents to 
 
 ## 🎬 Demo
 
-See Delpha MCP in action! Watch how easy it is to validate and enrich email data directly from your AI assistant.
+See Delpha MCP in action—validate and enrich data directly from your AI assistant.
 
 <p align="center">
   <img src="https://github.com/Delpha-Assistant/DelphaMCP/blob/release/v0.1.12/assets/demo.gif?raw=true" width="800" alt="Delpha MCP Demo">
@@ -52,22 +53,21 @@ See Delpha MCP in action! Watch how easy it is to validate and enrich email data
 
 ## 🚀 Quickstart
 
-1. **Install the package:**
+1. **Install the package**
+
    ```bash
    pip install delpha-mcp
    ```
 
-2. **Configure:**
-   - Go to `Settings → MCP` and add:
+2. **Configure**
+   Add this to your MCP settings (replace env values with your credentials):
+
    ```json
    {
      "mcpServers": {
        "Delpha": {
          "command": "python",
-         "args": [
-           "-m",
-           "delpha_mcp"
-         ],
+         "args": ["-m", "delpha_mcp"],
          "env": {
            "DELPHA_CLIENT_ID": "your_client_id_here",
            "DELPHA_CLIENT_SECRET": "your_client_secret_here"
@@ -76,15 +76,14 @@ See Delpha MCP in action! Watch how easy it is to validate and enrich email data
      }
    }
    ```
-   - Replace with your Delpha credentials.
 
-3. **Restart your app** — Delpha tools are now available!
+3. **Restart your app** — Delpha tools are now available.
 
 ---
 
 ## 🗝️ Getting Client Credentials
 
-To use Delpha MCP, you need OAuth2 client credentials. Please contact the Delpha team at [support.api@delpha.io](mailto:support.api@delpha.io) to request your client ID and secret.
+Delpha MCP uses OAuth2. Please contact **[support.api@delpha.io](mailto:support.api@delpha.io)** to request your client ID and secret.
 
 ---
 
@@ -92,128 +91,216 @@ To use Delpha MCP, you need OAuth2 client credentials. Please contact the Delpha
 
 Delpha MCP exposes a set of intelligent tools to assess and improve the quality of your data. Each tool is designed to address specific data quality challenges, providing actionable insights and suggestions for improvement.
 
-### Email
 
-**Available MCP Tool Names:**
-- `findAndValidateEmail`: Submit an email address for validation and enrichment, and receive a job ID for tracking progress.
-- `getEmailResult`: Retrieve the result and status of a previously submitted email validation/enrichment job.
-
-**Goal:**
-
-In today’s data-driven landscape, having accurate and complete email data directly impacts your organization’s efficiency, deliverability, and outreach success. Delpha’s **Email Finder** and **Email Validator** solutions ensure your email database remains robust, accurate, and up-to-date by systematically discovering missing emails and verifying email addresses.
-
-Delpha evaluates email data across four critical dimensions:
-
-- **Completeness**: Uses advanced Email Finder technology to locate and populate missing email addresses.
-- **Validity**: Employs a powerful Email Validator to confirm emails adhere to standard formatting rules and are deliverable.
-- **Accuracy**: Ensures that discovered emails match the intended individuals correctly.
-- **Consistency**: Verifies alignment between emails and related data points such as domains, company websites, etc..
-
-Additionally:
-
-- **Email Validator classifies emails** as personal or professional, supporting GDPR compliance and improving deliverability.
-- **Email Finder** offers **AI-generated email recommendation** for correcting or completing emails, accompanied by **confidence scores** to guide effective decision-making.
-
-Delpha’s integrated **Email Finder** and **Email Validator** provide a comprehensive health check and intelligent enrichment, delivering actionable insights that enhance communication success, regulatory compliance, and overall data integrity.
-
-
-### Address Validator and Address Finder
-
-**Available MCP Tool Names:**
-- `findAndValidateAddress`: Submit a postal address for validation and enrichment; returns a job ID to track progress.
-- `getAddressResult`: Retrieve the status and final result of a previously submitted address job.
-
-**Goal:**
-Ensure your address data is complete, valid, accurate, and consistent to improve delivery success, territory planning, analytics, and compliance.
-
-Delpha evaluates address data across four critical dimensions:
-- **Completeness**: Identifies and fills missing components (street number, street, city, postal code, country).
-- **Validity**: Ensures addresses conform to country-specific postal rules and canonical formats.
-- **Accuracy**: Normalizes inputs to a standardized structure and resolves ambiguous or conflicting parts.
-- **Consistency**: Verifies coherence across related fields (postal code vs city/country) and other data points.
-
-Additionally:
-- **Address Validator** standardizes and normalizes addresses to postal conventions and returns well-structured components.
-- **Address Finder** offers AI-generated recommendations with confidence scores to correct or complete addresses.
-
-Delpha’s integrated **Address Finder** and **Address Validator** deliver actionable, high-quality address data that improves operations, analytics, and downstream processes.
-
-### Website Validator and Website Finder
-
-**Available MCP Tool Names:**
-- `findAndValidateWebsite`: Submit a website for validation and enrichment; returns a job ID to track progress.
-- `getWebsiteResult`: Retrieve the status and final result of a previously submitted website job.
-
-**Goal:**
-Maintain accurate, canonical website data (root domains, normalization, qualification) for reliable enrichment, routing, and engagement.
-
-Delpha evaluates website data across four critical dimensions:
-- **Completeness**: Finds and populates missing company websites and root domains.
-- **Validity**: Confirms proper URL formatting, reachability, and safe normalization (scheme, redirects, HTTPS preference).
-- **Accuracy**: Ensures the discovered URL matches the intended entity and canonical domain.
-- **Consistency**: Verifies alignment between website domains and related data points such as company name and email domains.
-
-Additionally:
-- **Website Validator** normalizes URLs (scheme, subdomain, trailing slash) and qualifies domains when relevant.
-- **Website Finder** offers AI-generated website recommendations with confidence scores to correct or complete entries.
-
-Delpha’s integrated **Website Finder** and **Website Validator** provide a comprehensive health check and intelligent enrichment that drive higher data integrity and better customer experiences.
-
-### Email Insights
-
-**Available MCP Tool Name:**
-- `getEmailInsights`: Extract key insights from email content including name, phone number, title, company, and out-of-office status.
-
-**Goal:**
-
-Email communications contain a wealth of valuable information beyond just the email address itself. Delpha's Email Insight solution systematically analyzes email bodies to identify and extract critical contact information, professional details, and contextual insights that can transform how you understand and interact with your contacts.
-
-Delpha's Email Insight solution extracts and enriches information such as:
-
-- **Name**: Automatically identifies and extracts the sender's name from email communications.
-- **Phone Number**: Detects and normalizes phone numbers to facilitate direct contact.
-- **Title**: Extracts the sender's professional title, providing context for better engagement.
-- **Company**: Identifies the sender's organization to enhance CRM accuracy and business insights.
-- **Out-of-Office Status**: Determines if the sender is currently out of office, enabling timely and informed responses.
-
-Delpha's Email Insight delivers precise, structured insights, enhancing data quality, enabling smarter interactions, and driving informed business decisions.
-
-### LinkedIn Import
-
-**Available MCP Tool Names:**
-- `submitLinkedinImport`: Submit a LinkedIn import job for profiles or companies; returns a job ID to track progress.
-- `getLinkedinImportResult`: Retrieve the status and final result of a previously submitted LinkedIn import job.
-
-**Goal:**
-Accelerate prospecting and research with a high-throughput importer for LinkedIn and Sales Navigator. Submit a search or list source and fetch normalized profile or company data at scale.
-
-**Supported sources:**
-- LinkedIn search URLs (People/Companies)
-- Sales Navigator search URLs
-- Sales Navigator list URLs
-
-**Inputs:**
-- **url**: LinkedIn or Sales Navigator search/list URL
-- **cookie**: The LinkedIn session cookie to fetch data on the user’s behalf
-- **user_agent** (optional): Custom User-Agent string (defaults to a modern desktop browser)
-- **lang** (optional): Language string like `v=2&lang=en-us`
-- **object_type**: `profile` | `company`
-
-**Flow:**
-- Start a job with `submitLinkedinImport`.
-- We handle throttling and retries automatically.
-- Poll with `getLinkedinImportResult` until complete.
-- Receive a `result_url` pointing to the final JSON dataset.
-
-**Use cases:**
-- Lead sourcing and pipeline generation
-- Account and company research
-- CRM enrichment and analytics
-
-> More tools (address, social, website, deduplication, etc.) will be added soon as Delpha expands its data quality platform.
 
 ---
 
+### Email
+
+**MCP Tool Names**
+
+* `findAndValidateEmail`
+* `getEmailResult`
+
+**What it does**
+Keep email data deliverable and up-to-date by discovering missing addresses and validating existing ones.
+
+**How we assess**
+
+* **Completeness:** Find and populate missing addresses.
+* **Validity:** Check syntax and deliverability signals.
+* **Accuracy:** Ensure the email fits the intended person/entity context.
+* **Consistency:** Align inputs with normalized output.
+
+**Extras**
+
+* Classification (e.g., professional vs. personal) to support compliant outreach.
+* AI recommendations with confidence scores when a better email is likely.
+
+---
+
+### Address
+
+**MCP Tool Names**
+
+* `findAndValidateAddress`
+* `getAddressResult`
+
+**What it does**
+Standardize, validate, and complete postal addresses to improve delivery, analytics, and territory planning.
+
+**How we assess**
+
+* **Completeness:** Fill missing elements (street no., street, city, postal code, country).
+* **Validity:** Conformity to country-specific postal rules and canonical formats.
+* **Accuracy:** Normalize structure and resolve ambiguities.
+* **Consistency:** Compare input vs. normalized output.
+
+**Extras**
+
+* Returns a normalized, well-structured address.
+* AI recommendations with confidence scores when multiple plausible addresses exist.
+
+---
+
+### Website
+
+**MCP Tool Names**
+
+* `findAndValidateWebsite`
+* `getWebsiteResult`
+
+**What it does**
+Normalize and canonicalize company websites (domain, scheme, redirects) and suggest likely sites when the input is missing or off.
+
+**How we assess**
+
+* **Completeness:** Populate missing websites/root domains.
+* **Validity:** Confirm proper URL formatting and safe normalization (scheme, subdomain, trailing slash, redirects).
+* **Accuracy:** Check that the URL matches the intended entity.
+* **Consistency:** Compare input vs. normalized/canonical URL.
+
+**Extras**
+
+* Returns the normalized (and redirected if applicable) URL.
+* AI recommendations with confidence scores.
+
+---
+
+### LinkedIn
+
+**MCP Tool Names**
+
+* `findAndValidateLinkedin`
+* `getLinkedinResult`
+
+**What it does**
+Normalize LinkedIn profile/company URLs and, when needed, suggest the most relevant pages using context like name, company, and website.
+
+**How we assess**
+
+* **Completeness:** Detect presence/absence of a LinkedIn URL.
+* **Validity:** Validate **format** (e.g., `/in/` for people, company page patterns); not a live profile/existence check.
+* **Accuracy:** Check that the URL aligns with provided context (first/last name, company name, website).
+* **Consistency:** Compare input vs. normalized URL.
+
+**Extras**
+
+* Recommendations include URL, confidence, and helpful metadata (e.g., profile/page name, title/description, location, rank) to speed selection.
+
+---
+
+### Phone
+
+**MCP Tool Names**
+
+* `findAndValidatePhone`
+* `getPhoneResult`
+
+**What it does**
+Normalize phone numbers to international standards and check basic plausibility.
+
+**How we assess**
+
+* **Completeness:** Is a value present.
+* **Validity:** Does the number conform to country/region rules and basic plausibility checks (e.g., non-blacklisted patterns).
+* **Consistency:** Compare input vs. normalized E.164 output.
+
+**Notes**
+
+* No accuracy score or side-field recommendations.
+* If no country is provided, inference follows a configured country preference order.
+
+---
+
+### Name
+
+**MCP Tool Names**
+
+* `findAndValidateName`
+* `getNameResult`
+
+**What it does**
+Normalize person names and detect common data-entry issues to keep contact data clean.
+
+**How we assess**
+
+* **Completeness:** Separate scoring for **FirstName** and **LastName**.
+* **Validity:** Check both parts against reference databases.
+* **Consistency:** Compare input vs. normalized casing, hyphenation, etc.
+* **Misspelled:** Flag likely typos and propose close alternatives.
+* **Reversed:** Detect when first and last names appear swapped.
+
+**Extras**
+
+* Suggestions include corrected spelling, swapped order when appropriate, or simply the normalized version when everything looks good.
+* No accuracy score for names.
+
+---
+
+### Legal ID
+
+**MCP Tool Names**
+
+* `findAndValidateLegalID`
+* `getLegalIDResult`
+
+**What it does**
+Validate, normalize, and enrich company legal identifiers across supported countries and ID types.
+
+**How we assess**
+
+* **Completeness:** Determine ID type from provided country or input; populate when possible.
+* **Validity:** Normalize to canonical representation and verify against supported country rules and reference datasets.
+* **Accuracy:** Check that the ID corresponds to the intended entity using side fields (e.g., company name, address, website).
+* **Consistency:** Compare input vs. normalized value.
+
+**Extras**
+
+* Returns enriched context for matched entities (e.g., company name, website, address, industry) and ranked recommendations when input and side fields point to multiple candidates.
+
+> The list of supported countries and ID types is maintained in Delpha’s documentation; implementations should rely on what’s enabled in your environment.
+
+---
+
+### Email Insights
+
+**MCP Tool Name**
+
+* `getEmailInsights`
+
+**What it does**
+Extract structured signals from email bodies to update/contact records faster.
+
+**Examples of extracted fields**
+
+* Name, phone(s), title, company, department, address
+* Social links
+* Out-of-office window
+* Confidence score
+
+---
+
+### LinkedIn Import
+
+**MCP Tool Names**
+
+* `submitLinkedinImport`
+* `getLinkedinImportResult`
+
+**What it does**
+High-throughput importer for LinkedIn / Sales Navigator searches and lists. Submit a source URL and receive normalized profiles or companies at scale.
+
+**Flow**
+
+1. Start a job with `submitLinkedinImport`.
+2. We handle throttling and retries.
+3. Poll with `getLinkedinImportResult` for the final dataset URL.
+
+> Refer to the OpenAPI schemas for the exact input fields and outputs supported in your environment.
+
+---
 
 ## 📞 Support
-if you encounter any issues or have questions, please reach out to the Delpha support team or open an issue in the repository.
+
+If you encounter any issues or have questions, please reach out to the Delpha team at **[support.api@delpha.io](mailto:support.api@delpha.io)** or open an issue in the repository.
