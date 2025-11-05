@@ -299,8 +299,34 @@ High-throughput importer for LinkedIn / Sales Navigator searches and lists. Subm
 
 > Refer to the OpenAPI schemas for the exact input fields and outputs supported in your environment.
 
----
+### LinkedIn Scraper
 
+**MCP Tool Names**
+
+* `submitLinkedinScraper`
+* `getLinkedinScraperResult`
+
+**What it does**
+Efficiently extract public LinkedIn profile data for companies and organizations. The **LinkedIn Scraper** allows you to retrieve structured information from public LinkedIn company pages, enabling automated data collection and enrichment workflows.
+
+**Scope**
+* Currently supports public company profiles (public LinkedIn company pages)
+
+**Input**
+* LinkedIn company page URL
+
+**Flow**
+* Asynchronous job with a returned `job_id`; you retrieve the scraped data when ready
+
+**Output**
+* Clean, structured company data including name, description, industry, location, website, and other publicly available information
+
+**Use cases**
+* Company research, CRM enrichment, lead generation, market intelligence, data aggregation
+
+Ideal for bulk data collection from public LinkedIn sources without requiring authentication or session management.
+
+---
 ## 📞 Support
 
 If you encounter any issues or have questions, please reach out to the Delpha team at **[support.api@delpha.io](mailto:support.api@delpha.io)** or open an issue in the repository.
